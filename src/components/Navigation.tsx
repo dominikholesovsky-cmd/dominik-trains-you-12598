@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Dumbbell, Instagram, Phone } from "lucide-react";
+import { Menu, X, Instagram, Phone } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,21 +48,13 @@ const Navigation = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-0 hover:opacity-10 transition-opacity duration-500 bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]" />
           
           <div className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-18">
-            {/* Logo with Floating Effect */}
+            {/* Logo - Simplified */}
             <button
               onClick={() => scrollToSection("#uvod")}
-              className="flex items-center gap-2 sm:gap-3 font-bold text-base sm:text-lg hover:scale-105 transition-transform duration-300 group"
+              className="font-bold text-sm sm:text-base lg:text-lg hover:text-primary transition-colors"
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-primary/30 rounded-lg blur-md group-hover:blur-lg transition-all" />
-                <div className="relative p-2 rounded-lg bg-gradient-to-br from-primary/30 to-accent/30 border border-primary/40">
-                  <Dumbbell className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                </div>
-              </div>
-              <span className="hidden sm:inline bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">
-                Dominik Holešovský
-              </span>
-              <span className="sm:hidden text-sm">DH</span>
+              <span className="hidden xs:inline">Dominik Holešovský</span>
+              <span className="xs:hidden">Dominik H.</span>
             </button>
 
             {/* Desktop Navigation - Center */}

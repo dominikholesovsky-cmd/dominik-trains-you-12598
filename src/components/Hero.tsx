@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Dumbbell } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-trainer.jpg";
 
 const Hero = () => {
@@ -25,67 +25,60 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 relative">
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-          {/* Simple Icon Badge */}
-          <div className="flex justify-center">
-            <div className="p-4 rounded-xl bg-primary/10 backdrop-blur-sm border border-primary/30">
-              <Dumbbell className="w-10 h-10 md:w-12 md:h-12 text-primary" />
-            </div>
-          </div>
-
+      <div className="container mx-auto px-4 sm:px-6 z-10 relative pt-20 sm:pt-24">
+        <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8 animate-fade-in">
           {/* Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight px-2">
             Transformujte své tělo
-            <span className="block text-primary mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+            <span className="block text-primary mt-2 sm:mt-3 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
               s profesionálním vedením
             </span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4">
             Dominik Holešovský • Certifikovaný trenér s 4+ lety praxe
           </p>
 
           {/* Description */}
-          <p className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-sm xs:text-base sm:text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed px-4 sm:px-6">
             Zaměřuji se na diagnostiku pohybového aparátu, prevenci zranění a efektivní růst síly. V Monstergym Brno-Slatina vám pomůžu dosáhnout trvalých výsledků.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 sm:pt-6 px-4">
             <Button
               size="lg"
               variant="hero"
               onClick={scrollToContact}
-              className="text-lg px-8 py-6"
+              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
             >
               Domluvit První Trénink
-              <ArrowRight className="ml-2" />
+              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
             <Button
               size="lg"
               variant="outline"
               onClick={() => document.getElementById("sluzby")?.scrollIntoView({ behavior: "smooth" })}
-              className="text-lg px-8 py-6 border-primary/50 hover:border-primary"
+              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 border-primary/50 hover:border-primary"
             >
               Zjistit Více
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 pt-8 md:pt-12 max-w-2xl mx-auto px-4">
+          <div className="grid grid-cols-3 gap-3 xs:gap-4 sm:gap-6 md:gap-8 pt-6 sm:pt-8 md:pt-12 max-w-2xl mx-auto px-4">
             <div className="space-y-1 sm:space-y-2">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">4+</div>
-              <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">Let Zkušeností</div>
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">4+</div>
+              <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Let Zkušeností</div>
             </div>
             <div className="space-y-1 sm:space-y-2">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">50+</div>
-              <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">Spokojených Klientů</div>
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">50+</div>
+              <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Spokojených Klientů</div>
             </div>
             <div className="space-y-1 sm:space-y-2">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">100%</div>
-              <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">Profesionalita</div>
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">100%</div>
+              <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Profesionalita</div>
             </div>
           </div>
         </div>
