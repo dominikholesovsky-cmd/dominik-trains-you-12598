@@ -84,30 +84,30 @@ const Contact = () => {
   ];
 
   return (
-    <section id="kontakt" className="py-24 px-4 bg-background">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16 space-y-4 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold">Domluvte si trénink</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+    <section id="kontakt" className="py-12 sm:py-16 md:py-24 px-4 bg-background">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 space-y-3 sm:space-y-4 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Domluvte si trénink</h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Pojďme společně pracovat na vašich fitness cílech
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
           {/* Contact Info */}
-          <div className="space-y-8 animate-fade-in">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold">Kontaktní informace</h3>
+          <div className="space-y-6 sm:space-y-8 animate-fade-in">
+            <div className="space-y-3 sm:space-y-4">
+              <h3 className="text-xl sm:text-2xl font-bold">Kontaktní informace</h3>
               <p className="text-muted-foreground">
                 Neváhejte mě kontaktovat. Rád vám pomohu s vaším fitness plánem.
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {contactInfo.map((info, index) => (
                 <Card
                   key={index}
-                  className="p-6 bg-card border-border hover:border-primary/50 transition-all duration-300"
+                  className="p-4 sm:p-6 bg-card border-border hover:border-primary/50 transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
@@ -134,9 +134,9 @@ const Contact = () => {
             </div>
 
             {/* Quick CTA */}
-            <Card className="p-8 bg-primary/10 border-primary/30">
-              <div className="space-y-4">
-                <h4 className="text-xl font-bold">První trénink zdarma!</h4>
+            <Card className="p-5 sm:p-6 md:p-8 bg-primary/10 border-primary/30">
+              <div className="space-y-3 sm:space-y-4">
+                <h4 className="text-lg sm:text-xl font-bold">První trénink zdarma!</h4>
                 <p className="text-foreground/80">
                   Nabízím konzultaci a seznamovací trénink zdarma, kde společně zjistíme vaše cíle a nastavíme plán.
                 </p>
@@ -145,8 +145,8 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="p-6 sm:p-8 bg-card border-border animate-fade-in-scale">
-            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+          <Card className="p-4 sm:p-6 md:p-8 bg-card border-border animate-fade-in-scale">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Jméno *

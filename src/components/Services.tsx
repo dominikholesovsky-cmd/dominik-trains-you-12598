@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Activity, Calendar, ClipboardList, Check, Sparkles } from "lucide-react";
+import { useState } from "react";
 
 const services = [
   {
@@ -62,6 +63,8 @@ const packages = [
 ];
 
 const Services = () => {
+  const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
+  
   const scrollToContact = () => {
     document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -139,10 +142,11 @@ const Services = () => {
           {packages.map((pkg, index) => (
             <Card
               key={index}
-              className={`p-5 sm:p-6 relative overflow-hidden transition-all duration-300 animate-fade-in-scale hover:shadow-[var(--shadow-glow)] ${
-                pkg.popular
-                  ? "bg-primary/10 border-primary/50 hover:border-primary"
-                  : "bg-secondary border-border hover:border-primary/50 hover:bg-primary/10"
+              onClick={() => setSelectedPackage(selectedPackage === index ? null : index)}
+              className={`p-5 sm:p-6 relative overflow-hidden transition-all duration-300 animate-fade-in-scale cursor-pointer ${
+                selectedPackage === index
+                  ? "shadow-[var(--shadow-glow)] bg-primary/10 border-primary"
+                  : "bg-secondary border-border hover:border-primary/30"
               }`}
               style={{ animationDelay: `${(index + 2) * 0.1}s` }}
             >
