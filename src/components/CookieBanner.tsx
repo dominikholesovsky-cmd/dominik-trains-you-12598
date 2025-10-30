@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Cookie } from "lucide-react";
+import Terms from "./Terms";
 
 const CookieBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,9 +44,24 @@ const CookieBanner = () => {
             <p className="text-sm text-muted-foreground">
               Tento web používá cookies pro zlepšení uživatelské zkušenosti a analytics. 
               Používáním tohoto webu souhlasíte s našimi{" "}
-              <Link to="/podminky" className="text-primary hover:underline font-medium">
-                podmínkami použití
-              </Link>.
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    type="button"
+                    className="text-primary hover:underline font-medium"
+                  >
+                    podmínkami použití
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl max-h-[90vh]">
+                  <DialogHeader>
+                    <DialogTitle>Podmínky a ochrana osobních údajů</DialogTitle>
+                  </DialogHeader>
+                  <ScrollArea className="h-[70vh] pr-4">
+                    <Terms />
+                  </ScrollArea>
+                </DialogContent>
+              </Dialog>.
             </p>
           </div>
 
