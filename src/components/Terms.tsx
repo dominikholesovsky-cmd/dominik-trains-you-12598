@@ -8,8 +8,8 @@ interface TermsProps {
 
 const Terms = ({ onBack }: TermsProps) => {
   return (
-    <div className="min-h-screen bg-background py-16 sm:py-20 px-4">
-      <div className="container mx-auto max-w-4xl">
+    <div className="bg-background py-4 sm:py-8">
+      <div className="mx-auto max-w-4xl">
         {onBack && (
           <Button
             variant="outline"
@@ -21,27 +21,27 @@ const Terms = ({ onBack }: TermsProps) => {
           </Button>
         )}
 
-        <div className="space-y-8">
+        <div className="space-y-4 sm:space-y-6">
           {/* Header */}
-          <div className="text-center space-y-4">
-            <div className="inline-flex p-4 rounded-full bg-primary/20">
-              <Shield className="w-8 h-8 text-primary" />
+          <div className="text-center space-y-2 sm:space-y-3">
+            <div className="inline-flex p-2 sm:p-3 rounded-full bg-primary/20">
+              <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight px-2">
               Podmínky použití a ochrana osobních údajů
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               Platné od: {new Date().toLocaleDateString('cs-CZ')}
             </p>
           </div>
 
           {/* GDPR Notice */}
-          <Card className="p-6 sm:p-8 bg-primary/10 border-primary/30">
-            <div className="flex items-start gap-4">
-              <Lock className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-              <div className="space-y-2">
-                <h3 className="font-bold text-lg">Vaše soukromí je priorita</h3>
-                <p className="text-sm text-foreground/80">
+          <Card className="p-4 sm:p-6 bg-primary/10 border-primary/30">
+            <div className="flex items-start gap-3">
+              <Lock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div className="space-y-1 sm:space-y-2">
+                <h3 className="font-bold text-sm sm:text-base">Vaše soukromí je priorita</h3>
+                <p className="text-xs sm:text-sm text-foreground/80">
                   V souladu s GDPR zpracováváme vaše osobní údaje pouze pro účely komunikace 
                   a poskytování našich služeb. Vaše údaje nikdy nesdílíme s třetími stranami.
                 </p>
@@ -50,14 +50,14 @@ const Terms = ({ onBack }: TermsProps) => {
           </Card>
 
           {/* Terms Sections */}
-          <div className="space-y-6">
+          <div className="space-y-3 sm:space-y-4">
             {/* Personal Data Processing */}
-            <Card className="p-6 sm:p-8">
-              <div className="flex items-start gap-4 mb-4">
-                <User className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                <h2 className="text-xl sm:text-2xl font-bold">1. Zpracování osobních údajů</h2>
+            <Card className="p-4 sm:p-6">
+              <div className="flex items-start gap-3 mb-3">
+                <User className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <h2 className="text-base sm:text-lg font-bold">1. Zpracování osobních údajů</h2>
               </div>
-              <div className="space-y-3 text-sm sm:text-base text-foreground/80">
+              <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-foreground/80">
                 <p>
                   <strong>Správce údajů:</strong> Dominik Holešovský, osobní trenér
                 </p>
@@ -81,12 +81,12 @@ const Terms = ({ onBack }: TermsProps) => {
             </Card>
 
             {/* Data Storage */}
-            <Card className="p-6 sm:p-8">
-              <div className="flex items-start gap-4 mb-4">
-                <Lock className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                <h2 className="text-xl sm:text-2xl font-bold">2. Uložení a zabezpečení údajů</h2>
+            <Card className="p-4 sm:p-6">
+              <div className="flex items-start gap-3 mb-3">
+                <Lock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <h2 className="text-base sm:text-lg font-bold">2. Uložení a zabezpečení údajů</h2>
               </div>
-              <div className="space-y-3 text-sm sm:text-base text-foreground/80">
+              <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-foreground/80">
                 <p>
                   Vaše osobní údaje jsou uloženy bezpečně a chráněny před neoprávněným přístupem. 
                   Používáme moderní šifrovací technologie a bezpečnostní protokoly.
@@ -103,12 +103,12 @@ const Terms = ({ onBack }: TermsProps) => {
             </Card>
 
             {/* Your Rights */}
-            <Card className="p-6 sm:p-8">
-              <div className="flex items-start gap-4 mb-4">
-                <Shield className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                <h2 className="text-xl sm:text-2xl font-bold">3. Vaše práva</h2>
+            <Card className="p-4 sm:p-6">
+              <div className="flex items-start gap-3 mb-3">
+                <Shield className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <h2 className="text-base sm:text-lg font-bold">3. Vaše práva</h2>
               </div>
-              <div className="space-y-3 text-sm sm:text-base text-foreground/80">
+              <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-foreground/80">
                 <p>V souvislosti se zpracováním vašich osobních údajů máte následující práva:</p>
                 <ul className="list-disc list-inside space-y-2 ml-4">
                   <li><strong>Právo na přístup:</strong> Můžete požádat o informace o zpracování vašich údajů</li>
@@ -129,12 +129,12 @@ const Terms = ({ onBack }: TermsProps) => {
             </Card>
 
             {/* Service Terms */}
-            <Card className="p-6 sm:p-8">
-              <div className="flex items-start gap-4 mb-4">
-                <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                <h2 className="text-xl sm:text-2xl font-bold">4. Podmínky služeb</h2>
+            <Card className="p-4 sm:p-6">
+              <div className="flex items-start gap-3 mb-3">
+                <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <h2 className="text-base sm:text-lg font-bold">4. Podmínky služeb</h2>
               </div>
-              <div className="space-y-3 text-sm sm:text-base text-foreground/80">
+              <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-foreground/80">
                 <p><strong>Objednávka služeb:</strong></p>
                 <ul className="list-disc list-inside space-y-2 ml-4">
                   <li>Objednávka je závazná po vzájemné dohodě o termínu</li>
@@ -159,9 +159,9 @@ const Terms = ({ onBack }: TermsProps) => {
             </Card>
 
             {/* Cookies */}
-            <Card className="p-6 sm:p-8">
-              <h2 className="text-xl sm:text-2xl font-bold mb-4">5. Cookies</h2>
-              <div className="space-y-3 text-sm sm:text-base text-foreground/80">
+            <Card className="p-4 sm:p-6">
+              <h2 className="text-base sm:text-lg font-bold mb-2 sm:mb-3">5. Cookies</h2>
+              <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-foreground/80">
                 <p>
                   Tyto webové stránky používají pouze nezbytné cookies pro zajištění základní 
                   funkčnosti (např. uložení souhlasu s cookies). Nepoužíváme marketingové nebo 
@@ -171,9 +171,9 @@ const Terms = ({ onBack }: TermsProps) => {
             </Card>
 
             {/* Contact */}
-            <Card className="p-6 sm:p-8 bg-primary/10 border-primary/30">
-              <h2 className="text-xl sm:text-2xl font-bold mb-4">Kontakt pro dotazy k GDPR</h2>
-              <div className="space-y-2 text-sm sm:text-base">
+            <Card className="p-4 sm:p-6 bg-primary/10 border-primary/30">
+              <h2 className="text-base sm:text-lg font-bold mb-2 sm:mb-3">Kontakt pro dotazy k GDPR</h2>
+              <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
                 <p><strong>Dominik Holešovský</strong></p>
                 <p>Email: <a href="mailto:dominik.holesovsky@gmail.com" className="text-primary hover:underline">dominik.holesovsky@gmail.com</a></p>
                 <p>Telefon: <a href="tel:+420725961371" className="text-primary hover:underline">+420 725 961 371</a></p>
