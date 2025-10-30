@@ -31,10 +31,10 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 px-2 ${
           isScrolled
-            ? "w-[95%] max-w-7xl"
-            : "w-[90%] max-w-6xl"
+            ? "w-full max-w-7xl"
+            : "w-full max-w-6xl"
         }`}
       >
         <div

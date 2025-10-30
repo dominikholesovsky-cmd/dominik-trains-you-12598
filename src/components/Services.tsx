@@ -139,15 +139,15 @@ const Services = () => {
               style={{ animationDelay: `${(index + 2) * 0.1}s` }}
             >
               {pkg.popular && (
-                <div className="absolute -top-3 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-                  <Sparkles className="w-3 h-3" />
-                  NEJOBLÍBENĚJŠÍ
+                <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs sm:text-sm font-bold flex items-center gap-1 shadow-lg z-10">
+                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="whitespace-nowrap">NEJOBLÍBENĚJŠÍ</span>
                 </div>
               )}
 
               <div className="space-y-4 sm:space-y-6">
                 {/* Title & Price */}
-                <div className={pkg.popular ? "pt-2" : ""}>
+                <div className={pkg.popular ? "pt-8 sm:pt-10" : ""}>
                   <h3 className="text-xl sm:text-2xl font-bold mb-2">{pkg.title}</h3>
                   <div className="flex items-baseline gap-2 flex-wrap">
                     <span className="text-2xl xs:text-3xl sm:text-4xl font-bold text-primary break-all">{pkg.price}</span>
