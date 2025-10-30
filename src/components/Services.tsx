@@ -84,44 +84,49 @@ const Services = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="p-5 sm:p-6 bg-secondary border-border hover:border-primary/50 transition-all duration-300 animate-fade-in-scale"
+              className="p-5 sm:p-6 bg-secondary border-border hover:border-primary/50 transition-all duration-300 animate-fade-in-scale flex flex-col h-full"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="space-y-3 sm:space-y-4">
-                {/* Icon & Title */}
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+              {/* Flex container uvnitř */}
+              <div className="flex flex-col justify-between h-full space-y-3 sm:space-y-4">
+                {/* Horní část – obsah */}
+                <div>
+                  {/* Icon & Title */}
+                  <div className="flex items-start justify-between gap-3 mb-3 sm:mb-4">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                        <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg sm:text-xl font-bold">{service.title}</h3>
+                        <p className="text-xs text-muted-foreground">{service.unit}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-bold">{service.title}</h3>
-                      <p className="text-xs text-muted-foreground">{service.unit}</p>
+                    <div className="text-right flex-shrink-0 min-w-0">
+                      <div className="text-lg xs:text-xl sm:text-2xl font-bold text-primary break-all">{service.price}</div>
                     </div>
                   </div>
-                  <div className="text-right flex-shrink-0 min-w-0">
-                    <div className="text-lg xs:text-xl sm:text-2xl font-bold text-primary break-all">{service.price}</div>
-                  </div>
+
+                  {/* Description */}
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                    {service.description}
+                  </p>
+
+                  {/* Benefits */}
+                  <ul className="space-y-1.5 sm:space-y-2 mt-3 sm:mt-4">
+                    {service.benefits.map((benefit, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-xs text-foreground/80">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
-
-                {/* Benefits */}
-                <ul className="space-y-1.5 sm:space-y-2">
-                  {service.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-xs text-foreground/80">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-
+                {/* Spodní část – tlačítko zarovnané dolů */}
                 <Button
                   variant="hero"
-                  className="w-full mt-2"
+                  className="w-full mt-4"
                   onClick={scrollToContact}
                 >
                   Objednat Trénink
