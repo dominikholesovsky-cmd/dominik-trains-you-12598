@@ -35,19 +35,19 @@ const Hero = () => {
           </div>
 
           {/* Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-            Dominik Holešovský
-            <span className="block text-primary mt-2">Certifikovaný Osobní Trenér</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
+            Transformujte své tělo
+            <span className="block text-primary mt-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">s profesionálním vedením</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            Více než 4 roky zkušeností • Desítky spokojených klientů • Posilovna Monstergym, Brno - Slatina
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Dominik Holešovský • Certifikovaný trenér s 4+ lety praxe
           </p>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto">
-            Pomůžu vám dosáhnout vašich fitness cílů. Diagnostika pohybového aparátu, zdravý pohyb a efektivní nárůst síly s profesionálním přístupem.
+          <p className="text-base sm:text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed px-4">
+            Zaměřuji se na diagnostiku pohybového aparátu, prevenci zranění a efektivní růst síly. V Monstergym Brno-Slatina vám pomůžu dosáhnout trvalých výsledků.
           </p>
 
           {/* CTA Buttons */}
@@ -72,18 +72,18 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">4+</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">Let Zkušeností</div>
+          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 pt-8 md:pt-12 max-w-2xl mx-auto px-4">
+            <div className="space-y-1 sm:space-y-2">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">4+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">Let Zkušeností</div>
             </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">50+</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">Spokojených Klientů</div>
+            <div className="space-y-1 sm:space-y-2">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">50+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">Spokojených Klientů</div>
             </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">100%</div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">Profesionalita</div>
+            <div className="space-y-1 sm:space-y-2">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">100%</div>
+              <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">Profesionalita</div>
             </div>
           </div>
         </div>

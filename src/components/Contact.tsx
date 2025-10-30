@@ -44,14 +44,14 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Telefon",
-      value: "+420 XXX XXX XXX",
-      link: "tel:+420XXXXXXXXX",
+      value: "+420 725 961 371",
+      link: "tel:+420725961371",
     },
     {
       icon: Mail,
       title: "Email",
-      value: "dominik@example.cz",
-      link: "mailto:dominik@example.cz",
+      value: "dominik.holesovsky@gmail.com",
+      link: "mailto:dominik.holesovsky@gmail.com",
     },
   ];
 

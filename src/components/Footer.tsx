@@ -1,4 +1,4 @@
-import { Dumbbell, Mail, MapPin, Phone } from "lucide-react";
+import { Dumbbell, Mail, MapPin, Phone, Instagram } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -52,14 +52,20 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                <a href="tel:+420XXXXXXXXX" className="text-muted-foreground hover:text-primary transition-colors">
-                  +420 XXX XXX XXX
+                <a href="tel:+420725961371" className="text-muted-foreground hover:text-primary transition-colors">
+                  +420 725 961 371
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                <a href="mailto:dominik@example.cz" className="text-muted-foreground hover:text-primary transition-colors">
-                  dominik@example.cz
+                <a href="mailto:dominik.holesovsky@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  dominik.holesovsky@gmail.com
+                </a>
+              </li>
+              <li className="flex items-center gap-2 text-sm">
+                <Instagram className="w-4 h-4 text-primary flex-shrink-0" />
+                <a href="https://www.instagram.com/dominik.holesovsky/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                  @dominik.holesovsky
                 </a>
               </li>
             </ul>
