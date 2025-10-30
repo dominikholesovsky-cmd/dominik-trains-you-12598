@@ -159,7 +159,7 @@ const Services = () => {
 
               <div className="space-y-3 sm:space-y-4">
                 {/* Title & Price */}
-                <div className={pkg.popular ? "pt-7 sm:pt-8" : ""}>
+                <div className="pt-7 sm:pt-8">
                   <h3 className="text-lg sm:text-xl font-bold mb-1.5">{pkg.title}</h3>
                   <div className="flex items-baseline gap-2 flex-wrap">
                     <span className="text-xl xs:text-2xl sm:text-3xl font-bold text-primary break-all">{pkg.price}</span>
