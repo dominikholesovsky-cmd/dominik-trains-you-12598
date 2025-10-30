@@ -126,7 +126,7 @@ const Services = () => {
                 {/* Spodní část – tlačítko zarovnané dolů */}
                 <Button
                   variant="hero"
-                  className="w-full mt-4"
+                  className="w-full mt-4 font-semibold"
                   onClick={scrollToContact}
                 >
                   Objednat Trénink
@@ -190,7 +190,7 @@ const Services = () => {
 
                 <Button
                   variant={pkg.popular ? "hero" : "outline"}
-                  className="w-full"
+                  className="w-full font-semibold"
                   onClick={scrollToContact}
                 >
                   Objednat Balíček
