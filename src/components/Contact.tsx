@@ -30,14 +30,13 @@ const Contact = () => {
     termsAccepted: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
     
-    // Validate with zod
     const result = contactSchema.safeParse(formData);
-    
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
       result.error.errors.forEach((error) => {
@@ -50,17 +49,40 @@ const Contact = () => {
       return;
     }
 
-    // Here you would typically send the form data to your backend
-    toast.success("Zpráva odeslána! Brzy se vám ozvu.");
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-      termsAccepted: false,
-    });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xpwojlgy", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Zpráva byla úspěšně odeslána! Brzy se vám ozvu.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          termsAccepted: false,
+        });
+      } else {
+        toast.error("Něco se pokazilo. Zkuste to prosím znovu.");
+      }
+    } catch (error) {
+      toast.error("Nepodařilo se odeslat zprávu. Zkuste to později.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -154,16 +176,11 @@ const Contact = () => {
                 <Input
                   id="name"
                   value={formData.name}
-                  onChange={(e) => {
-                    setFormData({ ...formData, name: e.target.value });
-                    if (errors.name) setErrors({ ...errors, name: "" });
-                  }}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Vaše jméno"
                   className={`w-full ${errors.name ? "border-destructive" : ""}`}
                 />
-                {errors.name && (
-                  <p className="text-xs text-destructive mt-1">{errors.name}</p>
-                )}
+                {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
               </div>
 
               <div className="w-full">
@@ -174,16 +191,11 @@ const Contact = () => {
                   id="email"
                   type="email"
                   value={formData.email}
-                  onChange={(e) => {
-                    setFormData({ ...formData, email: e.target.value });
-                    if (errors.email) setErrors({ ...errors, email: "" });
-                  }}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="vas@email.cz"
                   className={`w-full ${errors.email ? "border-destructive" : ""}`}
                 />
-                {errors.email && (
-                  <p className="text-xs text-destructive mt-1">{errors.email}</p>
-                )}
+                {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
               </div>
 
               <div className="w-full">
@@ -194,16 +206,10 @@ const Contact = () => {
                   id="phone"
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => {
-                    setFormData({ ...formData, phone: e.target.value });
-                    if (errors.phone) setErrors({ ...errors, phone: "" });
-                  }}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder="+420 XXX XXX XXX"
                   className={`w-full ${errors.phone ? "border-destructive" : ""}`}
                 />
-                {errors.phone && (
-                  <p className="text-xs text-destructive mt-1">{errors.phone}</p>
-                )}
               </div>
 
               <div className="w-full">
@@ -213,17 +219,12 @@ const Contact = () => {
                 <Textarea
                   id="message"
                   value={formData.message}
-                  onChange={(e) => {
-                    setFormData({ ...formData, message: e.target.value });
-                    if (errors.message) setErrors({ ...errors, message: "" });
-                  }}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Napište mi o vašich cílech a očekáváních..."
                   rows={5}
                   className={`w-full ${errors.message ? "border-destructive" : ""}`}
                 />
-                {errors.message && (
-                  <p className="text-xs text-destructive mt-1">{errors.message}</p>
-                )}
+                {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
               </div>
 
               <div className="space-y-3">
@@ -231,23 +232,16 @@ const Contact = () => {
                   <Checkbox
                     id="terms"
                     checked={formData.termsAccepted}
-                    onCheckedChange={(checked) => {
-                      setFormData({ ...formData, termsAccepted: checked as boolean });
-                      if (errors.termsAccepted) setErrors({ ...errors, termsAccepted: "" });
-                    }}
+                    onCheckedChange={(checked) =>
+                      setFormData({ ...formData, termsAccepted: checked as boolean })
+                    }
                     className={errors.termsAccepted ? "border-destructive" : ""}
                   />
-                  <label
-                    htmlFor="terms"
-                    className="text-xs sm:text-sm leading-relaxed cursor-pointer"
-                  >
+                  <label htmlFor="terms" className="text-xs sm:text-sm leading-relaxed cursor-pointer">
                     Souhlasím se{" "}
                     <Dialog>
                       <DialogTrigger asChild>
-                        <button
-                          type="button"
-                          className="text-primary hover:underline font-medium"
-                        >
+                        <button type="button" className="text-primary hover:underline font-medium">
                           zpracováním osobních údajů a podmínkami použití
                         </button>
                       </DialogTrigger>
@@ -263,13 +257,17 @@ const Contact = () => {
                     {" "}dle GDPR *
                   </label>
                 </div>
-                {errors.termsAccepted && (
-                  <p className="text-xs text-destructive">{errors.termsAccepted}</p>
-                )}
+                {errors.termsAccepted && <p className="text-xs text-destructive">{errors.termsAccepted}</p>}
               </div>
 
-              <Button type="submit" size="lg" variant="hero" className="w-full">
-                Odeslat zprávu
+              <Button
+                type="submit"
+                size="lg"
+                variant="hero"
+                className="w-full"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Odesílám..." : "Odeslat zprávu"}
               </Button>
             </form>
           </Card>
