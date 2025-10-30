@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Cookie } from "lucide-react";
@@ -40,7 +41,10 @@ const CookieBanner = () => {
             <h3 className="font-bold text-lg">Cookies</h3>
             <p className="text-sm text-muted-foreground">
               Tento web používá cookies pro zlepšení uživatelské zkušenosti a analytics. 
-              Používáním tohoto webu souhlasíte s našimi podmínkami.
+              Používáním tohoto webu souhlasíte s našimi{" "}
+              <Link to="/podminky" className="text-primary hover:underline font-medium">
+                podmínkami použití
+              </Link>.
             </p>
           </div>
 
