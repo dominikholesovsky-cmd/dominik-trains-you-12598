@@ -12,56 +12,32 @@ const Hero = () => {
       id="uvod"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 animate-[zoom_20s_ease-in-out_infinite]"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        
-        {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background"></div>
-        
-        {/* Animated Grid */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              linear-gradient(to right, hsl(var(--primary) / 0.1) 1px, transparent 1px),
-              linear-gradient(to bottom, hsl(var(--primary) / 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px',
-          }}></div>
-        </div>
-
-        {/* Floating Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/30 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-[float_12s_ease-in-out_infinite_reverse]"></div>
+      {/* Background with subtle overlay */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background"></div>
       </div>
 
       {/* Content */}
       <div className="container mx-auto px-4 z-10 relative">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-          {/* Animated Icon Badge */}
+          {/* Simple Icon Badge */}
           <div className="flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
-              <div className="relative p-5 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 backdrop-blur-sm border-2 border-primary/50 hover:scale-110 transition-transform duration-300">
-                <Dumbbell className="w-12 h-12 md:w-14 md:h-14 text-primary animate-[wiggle_3s_ease-in-out_infinite]" />
-              </div>
+            <div className="p-4 rounded-xl bg-primary/10 backdrop-blur-sm border border-primary/30">
+              <Dumbbell className="w-10 h-10 md:w-12 md:h-12 text-primary" />
             </div>
           </div>
 
-          {/* Heading with Gradient Text */}
+          {/* Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
-            <span className="inline-block animate-[slideIn_0.8s_ease-out]">
-              Transformujte své tělo
-            </span>
-            <span className="block mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-[gradient_3s_ease-in-out_infinite] bg-[length:200%_auto]">
+            Transformujte své tělo
+            <span className="block text-primary mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
               s profesionálním vedením
             </span>
           </h1>
