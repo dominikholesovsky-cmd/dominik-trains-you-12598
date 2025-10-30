@@ -107,25 +107,25 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <Card
                   key={index}
-                  className="p-4 sm:p-6 bg-card border-border hover:border-primary/50 transition-all duration-300"
+                  className="p-4 sm:p-6 bg-card border-border hover:border-primary/50 transition-all duration-300 w-full overflow-hidden"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-6 h-6 text-primary" />
+                  <div className="flex items-start gap-3 sm:gap-4 w-full">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                     </div>
-                    <div>
-                      <p className="font-medium text-sm text-muted-foreground mb-1">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-xs sm:text-sm text-muted-foreground mb-1">
                         {info.title}
                       </p>
                       {info.link ? (
                         <a
                           href={info.link}
-                          className="text-lg font-semibold hover:text-primary transition-colors"
+                          className="text-sm sm:text-base md:text-lg font-semibold hover:text-primary transition-colors break-words"
                         >
                           {info.value}
                         </a>
                       ) : (
-                        <p className="text-lg font-semibold">{info.value}</p>
+                        <p className="text-sm sm:text-base md:text-lg font-semibold break-words">{info.value}</p>
                       )}
                     </div>
                   </div>
@@ -134,10 +134,10 @@ const Contact = () => {
             </div>
 
             {/* Quick CTA */}
-            <Card className="p-5 sm:p-6 md:p-8 bg-primary/10 border-primary/30">
+            <Card className="p-5 sm:p-6 md:p-8 bg-primary/10 border-primary/30 w-full">
               <div className="space-y-3 sm:space-y-4">
-                <h4 className="text-lg sm:text-xl font-bold">První trénink zdarma!</h4>
-                <p className="text-foreground/80">
+                <h4 className="text-base sm:text-lg md:text-xl font-bold">První trénink zdarma!</h4>
+                <p className="text-sm sm:text-base text-foreground/80">
                   Nabízím konzultaci a seznamovací trénink zdarma, kde společně zjistíme vaše cíle a nastavíme plán.
                 </p>
               </div>
