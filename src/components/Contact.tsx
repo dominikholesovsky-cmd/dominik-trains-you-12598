@@ -2,9 +2,24 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { z } from "zod";
+import Terms from "./Terms";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Jméno musí mít alespoň 2 znaky").max(100, "Jméno je příliš dlouhé"),
+  email: z.string().trim().email("Neplatná emailová adresa").max(255, "Email je příliš dlouhý"),
+  phone: z.string().trim().max(20, "Telefon je příliš dlouhý").optional(),
+  message: z.string().trim().min(10, "Zpráva musí mít alespoň 10 znaků").max(1000, "Zpráva je příliš dlouhá"),
+  termsAccepted: z.boolean().refine((val) => val === true, {
+    message: "Musíte souhlasit s podmínkami",
+  }),
+});
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,14 +27,26 @@ const Contact = () => {
     email: "",
     phone: "",
     message: "",
+    termsAccepted: false,
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
     
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      toast.error("Prosím vyplňte všechna povinná pole");
+    // Validate with zod
+    const result = contactSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((error) => {
+        if (error.path[0]) {
+          fieldErrors[error.path[0].toString()] = error.message;
+        }
+      });
+      setErrors(fieldErrors);
+      toast.error("Prosím opravte chyby ve formuláři");
       return;
     }
 
@@ -32,6 +59,7 @@ const Contact = () => {
       email: "",
       phone: "",
       message: "",
+      termsAccepted: false,
     });
   };
 
@@ -117,8 +145,8 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="p-8 bg-card border-border animate-fade-in-scale">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <Card className="p-6 sm:p-8 bg-card border-border animate-fade-in-scale">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Jméno *
@@ -126,10 +154,16 @@ const Contact = () => {
                 <Input
                   id="name"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value });
+                    if (errors.name) setErrors({ ...errors, name: "" });
+                  }}
                   placeholder="Vaše jméno"
-                  required
+                  className={errors.name ? "border-destructive" : ""}
                 />
+                {errors.name && (
+                  <p className="text-xs text-destructive mt-1">{errors.name}</p>
+                )}
               </div>
 
               <div>
@@ -140,10 +174,16 @@ const Contact = () => {
                   id="email"
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    if (errors.email) setErrors({ ...errors, email: "" });
+                  }}
                   placeholder="vas@email.cz"
-                  required
+                  className={errors.email ? "border-destructive" : ""}
                 />
+                {errors.email && (
+                  <p className="text-xs text-destructive mt-1">{errors.email}</p>
+                )}
               </div>
 
               <div>
@@ -154,9 +194,16 @@ const Contact = () => {
                   id="phone"
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, phone: e.target.value });
+                    if (errors.phone) setErrors({ ...errors, phone: "" });
+                  }}
                   placeholder="+420 XXX XXX XXX"
+                  className={errors.phone ? "border-destructive" : ""}
                 />
+                {errors.phone && (
+                  <p className="text-xs text-destructive mt-1">{errors.phone}</p>
+                )}
               </div>
 
               <div>
@@ -166,11 +213,59 @@ const Contact = () => {
                 <Textarea
                   id="message"
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, message: e.target.value });
+                    if (errors.message) setErrors({ ...errors, message: "" });
+                  }}
                   placeholder="Napište mi o vašich cílech a očekáváních..."
                   rows={5}
-                  required
+                  className={errors.message ? "border-destructive" : ""}
                 />
+                {errors.message && (
+                  <p className="text-xs text-destructive mt-1">{errors.message}</p>
+                )}
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <Checkbox
+                    id="terms"
+                    checked={formData.termsAccepted}
+                    onCheckedChange={(checked) => {
+                      setFormData({ ...formData, termsAccepted: checked as boolean });
+                      if (errors.termsAccepted) setErrors({ ...errors, termsAccepted: "" });
+                    }}
+                    className={errors.termsAccepted ? "border-destructive" : ""}
+                  />
+                  <label
+                    htmlFor="terms"
+                    className="text-xs sm:text-sm leading-relaxed cursor-pointer"
+                  >
+                    Souhlasím se{" "}
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button
+                          type="button"
+                          className="text-primary hover:underline font-medium"
+                        >
+                          zpracováním osobních údajů a podmínkami použití
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[90vh]">
+                        <DialogHeader>
+                          <DialogTitle>Podmínky a ochrana osobních údajů</DialogTitle>
+                        </DialogHeader>
+                        <ScrollArea className="h-[70vh] pr-4">
+                          <Terms />
+                        </ScrollArea>
+                      </DialogContent>
+                    </Dialog>
+                    {" "}dle GDPR *
+                  </label>
+                </div>
+                {errors.termsAccepted && (
+                  <p className="text-xs text-destructive">{errors.termsAccepted}</p>
+                )}
               </div>
 
               <Button type="submit" size="lg" variant="hero" className="w-full">
