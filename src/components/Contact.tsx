@@ -93,9 +93,9 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 max-w-full">
           {/* Contact Info */}
-          <div className="space-y-6 sm:space-y-8 animate-fade-in">
+          <div className="space-y-6 sm:space-y-8 animate-fade-in w-full max-w-full">
             <div className="space-y-3 sm:space-y-4">
               <h3 className="text-xl sm:text-2xl font-bold">Kontaktní informace</h3>
               <p className="text-muted-foreground">
@@ -145,9 +145,9 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="p-4 sm:p-6 md:p-8 bg-card border-border animate-fade-in-scale">
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6">
-              <div>
+          <Card className="p-4 sm:p-6 md:p-8 bg-card border-border animate-fade-in-scale w-full max-w-full">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6 w-full">
+              <div className="w-full">
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Jméno *
                 </label>
@@ -159,14 +159,14 @@ const Contact = () => {
                     if (errors.name) setErrors({ ...errors, name: "" });
                   }}
                   placeholder="Vaše jméno"
-                  className={errors.name ? "border-destructive" : ""}
+                  className={`w-full ${errors.name ? "border-destructive" : ""}`}
                 />
                 {errors.name && (
                   <p className="text-xs text-destructive mt-1">{errors.name}</p>
                 )}
               </div>
 
-              <div>
+              <div className="w-full">
                 <label htmlFor="email" className="block text-sm font-medium mb-2">
                   Email *
                 </label>
@@ -179,14 +179,14 @@ const Contact = () => {
                     if (errors.email) setErrors({ ...errors, email: "" });
                   }}
                   placeholder="vas@email.cz"
-                  className={errors.email ? "border-destructive" : ""}
+                  className={`w-full ${errors.email ? "border-destructive" : ""}`}
                 />
                 {errors.email && (
                   <p className="text-xs text-destructive mt-1">{errors.email}</p>
                 )}
               </div>
 
-              <div>
+              <div className="w-full">
                 <label htmlFor="phone" className="block text-sm font-medium mb-2">
                   Telefon
                 </label>
@@ -199,14 +199,14 @@ const Contact = () => {
                     if (errors.phone) setErrors({ ...errors, phone: "" });
                   }}
                   placeholder="+420 XXX XXX XXX"
-                  className={errors.phone ? "border-destructive" : ""}
+                  className={`w-full ${errors.phone ? "border-destructive" : ""}`}
                 />
                 {errors.phone && (
                   <p className="text-xs text-destructive mt-1">{errors.phone}</p>
                 )}
               </div>
 
-              <div>
+              <div className="w-full">
                 <label htmlFor="message" className="block text-sm font-medium mb-2">
                   Zpráva *
                 </label>
@@ -219,7 +219,7 @@ const Contact = () => {
                   }}
                   placeholder="Napište mi o vašich cílech a očekáváních..."
                   rows={5}
-                  className={errors.message ? "border-destructive" : ""}
+                  className={`w-full ${errors.message ? "border-destructive" : ""}`}
                 />
                 {errors.message && (
                   <p className="text-xs text-destructive mt-1">{errors.message}</p>
