@@ -12,16 +12,21 @@ const Hero = () => {
       id="uvod"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background with subtle overlay */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      {/* Background with overlay and subtle effects */}
+      <div className="absolute inset-0 z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background"></div>
+        
+        {/* Subtle floating orbs */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl opacity-40"></div>
       </div>
 
       {/* Content */}

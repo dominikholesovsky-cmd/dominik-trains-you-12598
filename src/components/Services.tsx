@@ -96,8 +96,8 @@ const Services = () => {
                       <p className="text-xs sm:text-sm text-muted-foreground">{service.unit}</p>
                     </div>
                   </div>
-                  <div className="text-right flex-shrink-0">
-                    <div className="text-2xl sm:text-3xl font-bold text-primary">{service.price}</div>
+                  <div className="text-right flex-shrink-0 min-w-0">
+                    <div className="text-xl xs:text-2xl sm:text-3xl font-bold text-primary break-all">{service.price}</div>
                   </div>
                 </div>
 
@@ -139,7 +139,7 @@ const Services = () => {
               style={{ animationDelay: `${(index + 2) * 0.1}s` }}
             >
               {pkg.popular && (
-                <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                <div className="absolute -top-3 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
                   <Sparkles className="w-3 h-3" />
                   NEJOBLÍBENĚJŠÍ
                 </div>
@@ -147,11 +147,11 @@ const Services = () => {
 
               <div className="space-y-4 sm:space-y-6">
                 {/* Title & Price */}
-                <div>
+                <div className={pkg.popular ? "pt-2" : ""}>
                   <h3 className="text-xl sm:text-2xl font-bold mb-2">{pkg.title}</h3>
                   <div className="flex items-baseline gap-2 flex-wrap">
-                    <span className="text-3xl sm:text-4xl font-bold text-primary">{pkg.price}</span>
-                    <span className="text-base sm:text-lg text-muted-foreground line-through">{pkg.originalPrice}</span>
+                    <span className="text-2xl xs:text-3xl sm:text-4xl font-bold text-primary break-all">{pkg.price}</span>
+                    <span className="text-sm xs:text-base sm:text-lg text-muted-foreground line-through">{pkg.originalPrice}</span>
                   </div>
                   <p className="text-xs sm:text-sm text-primary font-semibold mt-1">{pkg.perSession}</p>
                 </div>

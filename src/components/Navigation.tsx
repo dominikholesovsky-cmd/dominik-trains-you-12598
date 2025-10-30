@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Instagram, Phone } from "lucide-react";
+import { Menu, X, Dumbbell, Instagram, Phone } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,13 +48,15 @@ const Navigation = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-0 hover:opacity-10 transition-opacity duration-500 bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]" />
           
           <div className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-18">
-            {/* Logo - Simplified */}
+            {/* Logo with Icon */}
             <button
               onClick={() => scrollToSection("#uvod")}
-              className="font-bold text-sm sm:text-base lg:text-lg hover:text-primary transition-colors"
+              className="flex items-center gap-2 font-bold text-sm sm:text-base lg:text-lg hover:text-primary transition-all group"
             >
-              <span className="hidden xs:inline">Dominik Holešovský</span>
-              <span className="xs:hidden">Dominik H.</span>
+              <div className="p-1.5 sm:p-2 rounded-lg bg-primary/20 border border-primary/30 group-hover:bg-primary/30 transition-colors">
+                <Dumbbell className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+              </div>
+              <span>Dominik Holešovský</span>
             </button>
 
             {/* Desktop Navigation - Center */}
