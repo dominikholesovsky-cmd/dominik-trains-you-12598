@@ -53,12 +53,14 @@ const CookieBanner = () => {
                     podmínkami použití
                   </button>
                 </DialogTrigger>
-                <DialogContent className="max-w-4xl max-h-[90vh]">
-                  <DialogHeader>
-                    <DialogTitle>Podmínky a ochrana osobních údajů</DialogTitle>
+                <DialogContent className="max-w-[95vw] sm:max-w-2xl lg:max-w-4xl max-h-[85vh] sm:max-h-[90vh] p-4 sm:p-6">
+                  <DialogHeader className="space-y-2 pb-4">
+                    <DialogTitle className="text-lg sm:text-xl">Podmínky a ochrana osobních údajů</DialogTitle>
                   </DialogHeader>
-                  <ScrollArea className="h-[70vh] pr-4">
-                    <Terms />
+                  <ScrollArea className="h-[65vh] sm:h-[70vh] pr-2 sm:pr-4">
+                    <div className="text-sm sm:text-base">
+                      <Terms />
+                    </div>
                   </ScrollArea>
                 </DialogContent>
               </Dialog>.
