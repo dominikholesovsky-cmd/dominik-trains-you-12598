@@ -20,7 +20,7 @@ const services = [
   {
     icon: ClipboardList,
     title: "Tréninkový Plán",
-    description: "Profesionální plán ušitý přímo pro vaše potřeby a cíle.",
+    description: "Profesionální plán ušitý přímo pro vaše potřeby a cíle.\n",
     price: "1 000 Kč",
     unit: "3 měsíce",
     benefits: [
