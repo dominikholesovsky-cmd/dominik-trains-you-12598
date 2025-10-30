@@ -11,6 +11,24 @@ import CookieBanner from "@/components/CookieBanner";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      
+      {/* SKRYTÝ SEO BLOK – pro crawlery a screen-readery */}
+      <div className="sr-only">
+          <h1>Dominik Holešovský – Certifikovaný osobní trenér Brno</h1>
+          <p>
+            Nabízím osobní tréninky, online programy a výživové poradenství pro zvýšení síly,
+            zdravý pohyb a efektivní tréninkové plány. Více než 4 roky zkušeností a desítky spokojených klientů.
+          </p>
+          <ul>
+            <li><a href="#hero">Úvodní Hero</a></li>
+            <li><a href="#services">Moje služby</a></li>
+            <li><a href="#testimonials">Reference klientů</a></li>
+            <li><a href="#about">O mně</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </div>
+
+      {/* EXISTUJÍCÍ VIZUÁLNÍ LAYOUT */}
       <Navigation />
       <main>
         <Hero />
