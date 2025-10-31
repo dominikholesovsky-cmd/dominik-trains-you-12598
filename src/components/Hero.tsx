@@ -71,6 +71,14 @@ const Hero = () => {
             </Button>
           </div>
 
+          
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+            <div className="w-6 h-10 rounded-full border-2 border-primary/50 flex items-start justify-center p-2 bg-background/60 backdrop-blur-sm">
+              <div className="w-1 h-3 bg-primary rounded-full"></div>
+            </div>
+          </div>
+
           {/* Stats */}
           <div className="grid grid-cols-3 gap-3 xs:gap-4 sm:gap-6 md:gap-8 pt-6 sm:pt-8 md:pt-12 max-w-2xl mx-auto px-4">
             <div className="space-y-1 sm:space-y-2">
@@ -86,13 +94,6 @@ const Hero = () => {
               <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Profesionalita</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-        <div className="w-6 h-10 rounded-full border-2 border-primary/50 flex items-start justify-center p-2 bg-background/60 backdrop-blur-sm">
-          <div className="w-1 h-3 bg-primary rounded-full"></div>
         </div>
       </div>
     </section>
