@@ -116,46 +116,7 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 max-w-full">
-          {/* Contact Info */}
-          <div className="space-y-6 sm:space-y-8 animate-fade-in w-full max-w-full">
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-xl sm:text-2xl font-bold">Kontaktní informace</h3>
-              <p className="text-muted-foreground">
-                Neváhejte mě kontaktovat. Rád vám pomohu s vaším fitness plánem.
-              </p>
-            </div>
-
-            <div className="space-y-3 sm:space-y-4">
-              {contactInfo.map((info, index) => (
-                <Card
-                  key={index}
-                  className="p-4 sm:p-6 bg-card border-border hover:border-primary/50 transition-all duration-300 w-full overflow-hidden"
-                >
-                  <div className="flex items-start gap-3 sm:gap-4 w-full">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-xs sm:text-sm text-muted-foreground mb-1">
-                        {info.title}
-                      </p>
-                      {info.link ? (
-                        <a
-                          href={info.link}
-                          className="text-sm sm:text-base md:text-lg font-semibold hover:text-primary transition-colors break-words"
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-sm sm:text-base md:text-lg font-semibold break-words">{info.value}</p>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-
-            {/* Contact Form */}
+          {/* Contact Form */}
           <Card className="p-4 sm:p-6 md:p-8 bg-card border-border animate-fade-in-scale w-full max-w-full">
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6 w-full">
               <div className="w-full">
@@ -261,6 +222,45 @@ const Contact = () => {
             </form>
           </Card>
 
+          {/* Contact Info */}
+          <div className="space-y-6 sm:space-y-8 animate-fade-in w-full max-w-full">
+            <div className="space-y-3 sm:space-y-4">
+              <h3 className="text-xl sm:text-2xl font-bold">Kontaktní informace</h3>
+              <p className="text-muted-foreground">
+                Neváhejte mě kontaktovat. Rád vám pomohu s vaším fitness plánem.
+              </p>
+            </div>
+
+            <div className="space-y-3 sm:space-y-4">
+              {contactInfo.map((info, index) => (
+                <Card
+                  key={index}
+                  className="p-4 sm:p-6 bg-card border-border hover:border-primary/50 transition-all duration-300 w-full overflow-hidden"
+                >
+                  <div className="flex items-start gap-3 sm:gap-4 w-full">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-xs sm:text-sm text-muted-foreground mb-1">
+                        {info.title}
+                      </p>
+                      {info.link ? (
+                        <a
+                          href={info.link}
+                          className="text-sm sm:text-base md:text-lg font-semibold hover:text-primary transition-colors break-words"
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        <p className="text-sm sm:text-base md:text-lg font-semibold break-words">{info.value}</p>
+                      )}
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
             {/* Quick CTA */}
             <Card className="p-5 sm:p-6 md:p-8 bg-primary/10 border-primary/30 w-full">
               <div className="space-y-3 sm:space-y-4">
@@ -271,6 +271,7 @@ const Contact = () => {
               </div>
             </Card>
           </div>
+
         </div>
       </div>
     </section>
