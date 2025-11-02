@@ -50,7 +50,7 @@ const packages = [
     title: "Balíček 10 Tréninků",
     price: "5 400 Kč",
     originalPrice: "6 000 Kč",
-    savings: "600 Kč - 1 trénink zdarma",
+    savings: "600 Kč - 1 trénink",
     perSession: "540 Kč/trénink",
     popular: true,
     benefits: [
