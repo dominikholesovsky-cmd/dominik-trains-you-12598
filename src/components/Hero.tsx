@@ -89,7 +89,7 @@ const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-3 px-4 xs:gap-4 sm:gap-6 px-4 md:gap-8 pt-6 px-4 sm:pt-8 md:pt-12 max-w-2xl mx-auto px-4">
+            <div className="grid grid-cols-3 gap-3 xs:gap-4 sm:gap-6 md:gap-8 pt-6 sm:pt-8 md:pt-12 max-w-2xl mx-auto px-8">
               <div className="space-y-1 sm:space-y-2">
                 <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">4+</div>
                 <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Let Zkušeností</div>
