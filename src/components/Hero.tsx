@@ -49,7 +49,7 @@ const Hero = () => {
           <div className="max-w-5xl text-center space-y-6 sm:space-y-8 animate-fade-in">
             {/* Main heading - Name */}
             <div className="space-y-3 sm:space-y-4">
-              <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight px-2">
+              <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-tight px-2">
                 Dominik Holešovský
               </h1>
               <p className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary">
