@@ -70,7 +70,7 @@ const Services = () => {
   };
 
   return (
-    <section id="sluzby" className="py-16 sm:py-20 md:py-24 px-4 bg-card">
+    <section id="sluzby" className="py-16 sm:py-16 md:py-16 px-4 bg-card">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 sm:mb-16 space-y-3 sm:space-y-4 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Služby & Ceník</h2>
