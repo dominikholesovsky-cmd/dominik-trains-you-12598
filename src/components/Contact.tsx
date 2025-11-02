@@ -155,18 +155,7 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Quick CTA */}
-            <Card className="p-5 sm:p-6 md:p-8 bg-primary/10 border-primary/30 w-full">
-              <div className="space-y-3 sm:space-y-4">
-                <h4 className="text-base sm:text-lg md:text-xl font-bold">První trénink zdarma!</h4>
-                <p className="text-sm sm:text-base text-foreground/80">
-                  Nabízím konzultaci a seznamovací trénink zdarma, kde společně zjistíme vaše cíle a nastavíme plán.
-                </p>
-              </div>
-            </Card>
-          </div>
-
-          {/* Contact Form */}
+            {/* Contact Form */}
           <Card className="p-4 sm:p-6 md:p-8 bg-card border-border animate-fade-in-scale w-full max-w-full">
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6 w-full">
               <div className="w-full">
@@ -271,6 +260,17 @@ const Contact = () => {
               </Button>
             </form>
           </Card>
+
+            {/* Quick CTA */}
+            <Card className="p-5 sm:p-6 md:p-8 bg-primary/10 border-primary/30 w-full">
+              <div className="space-y-3 sm:space-y-4">
+                <h4 className="text-base sm:text-lg md:text-xl font-bold">První trénink zdarma!</h4>
+                <p className="text-sm sm:text-base text-foreground/80">
+                  Nabízím konzultaci a seznamovací trénink zdarma, kde společně zjistíme vaše cíle a nastavíme plán.
+                </p>
+              </div>
+            </Card>
+          </div>
         </div>
       </div>
     </section>
