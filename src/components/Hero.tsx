@@ -104,12 +104,11 @@ const Hero = () => {
               </div>
             </div>
 
-          {/* Decorative Element - Right Side (hidden on mobile) */}
-          <div className="hidden lg:block w-16">
-        </div>
-      </div>
-
-    </section>
+           {/* Decorative Element */}
+            <div className="hidden lg:block w-16" />
+          </div> {/* <-- tady uzavíráme hlavní flex container */}
+        </div> {/* <-- tady uzavíráme container */}
+      </section>
   );
 };
 
