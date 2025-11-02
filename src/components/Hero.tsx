@@ -63,7 +63,7 @@ const Hero = () => {
             </p>
 
             {/* Description */}
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Transformujte své tělo s profesionálním vedením. Zaměřuji se na prevenci zranění, efektivní růst síly a trvalé výsledky.
             </p>
 
