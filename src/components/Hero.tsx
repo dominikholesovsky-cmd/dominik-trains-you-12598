@@ -29,71 +29,89 @@ const Hero = () => {
         <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl opacity-40"></div>
       </div>
 
-      {/* Content */}
+      {/* Content Container with Scroll Indicator on Side */}
       <div className="container mx-auto px-4 sm:px-6 z-10 relative pt-20 sm:pt-24">
-        <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8 animate-fade-in">
-          {/* Main heading - Name */}
-          <div className="space-y-3 sm:space-y-4">
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight px-2">
-              Dominik Holešovský
-            </h1>
-            <p className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary">
-              Certifikovaný trenér
+        <div className="flex items-center justify-center gap-8 lg:gap-16">
+          
+          {/* Scroll Indicator - Left Side (hidden on mobile) */}
+          <div className="hidden lg:flex flex-col items-center gap-4 animate-fade-in">
+            <div className="text-sm text-muted-foreground uppercase tracking-widest writing-mode-vertical rotate-180">
+              Scroll
+            </div>
+            <div className="animate-bounce">
+              <div className="w-6 h-10 rounded-full border-2 border-primary/50 flex items-start justify-center p-2 bg-background/60 backdrop-blur-sm">
+                <div className="w-1 h-3 bg-primary rounded-full"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="max-w-5xl text-center space-y-6 sm:space-y-8 animate-fade-in">
+            {/* Main heading - Name */}
+            <div className="space-y-3 sm:space-y-4">
+              <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight px-2">
+                Dominik Holešovský
+              </h1>
+              <p className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary">
+                Certifikovaný trenér
+              </p>
+            </div>
+
+            {/* Subheading */}
+            <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4">
+              4+ let praxe • Specialista na diagnostiku pohybového aparátu
             </p>
-          </div>
 
-          {/* Subheading */}
-          <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4">
-            4+ let praxe • Specialista na diagnostiku pohybového aparátu
-          </p>
+            {/* Description */}
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed px-4 sm:px-6">
+              Transformujte své tělo s profesionálním vedením. Zaměřuji se na prevenci zranění, efektivní růst síly a trvalé výsledky.
+            </p>
 
-          {/* Description */}
-          <p className="text-sm xs:text-base sm:text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed px-4 sm:px-6">
-            Transformujte své tělo s profesionálním vedením. Zaměřuji se na prevenci zranění, efektivní růst síly a trvalé výsledky.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 sm:pt-6 px-4">
-            <Button
-              size="lg"
-              variant="hero"
-              onClick={scrollToContact}
-              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
-            >
-              Domluvit První Trénink
-              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => document.getElementById("sluzby")?.scrollIntoView({ behavior: "smooth" })}
-              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 border-primary/50 hover:border-primary"
-            >
-              Zjistit Více
-            </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-3 xs:gap-4 sm:gap-6 md:gap-8 pt-6 sm:pt-8 md:pt-12 max-w-2xl mx-auto px-4">
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">4+</div>
-              <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Let Zkušeností</div>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 sm:pt-6 px-4">
+              <Button
+                size="lg"
+                variant="hero"
+                onClick={scrollToContact}
+                className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
+              >
+                Domluvit První Trénink
+                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => document.getElementById("sluzby")?.scrollIntoView({ behavior: "smooth" })}
+                className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 border-primary/50 hover:border-primary"
+              >
+                Zjistit Více
+              </Button>
             </div>
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">50+</div>
-              <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Spokojených Klientů</div>
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">100%</div>
-              <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Profesionalita</div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-3 xs:gap-4 sm:gap-6 md:gap-8 pt-6 sm:pt-8 md:pt-12 max-w-2xl mx-auto px-4">
+              <div className="space-y-1 sm:space-y-2">
+                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">4+</div>
+                <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Let Zkušeností</div>
+              </div>
+              <div className="space-y-1 sm:space-y-2">
+                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">50+</div>
+                <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Spokojených Klientů</div>
+              </div>
+              <div className="space-y-1 sm:space-y-2">
+                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">100%</div>
+                <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Profesionalita</div>
+              </div>
             </div>
           </div>
+
+          {/* Decorative Element - Right Side (hidden on mobile) */}
+          <div className="hidden lg:block w-16"></div>
         </div>
       </div>
 
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+      {/* Mobile Scroll Indicator - Bottom Center */}
+      <div className="lg:hidden absolute bottom-6 left-1/2 -translate-x-1/2 z-20 animate-bounce">
         <div className="w-6 h-10 rounded-full border-2 border-primary/50 flex items-start justify-center p-2 bg-background/60 backdrop-blur-sm">
           <div className="w-1 h-3 bg-primary rounded-full"></div>
         </div>
