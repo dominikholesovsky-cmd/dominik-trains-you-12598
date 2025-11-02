@@ -89,7 +89,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Posilovna",
-      value: "Monstergym, Brno - Slatina, Tuřanka 1, 627 00",
+      value: "MonsterGym, Brno - Slatina, Tuřanka 1, 627 00",
     },
     {
       icon: Phone,
