@@ -105,7 +105,7 @@ const Hero = () => {
             </div>
 
           {/* Decorative Element - Right Side (hidden on mobile) */}
-          <div className="hidden lg:block w-16"></div>
+          <div className="hidden lg:block w-16">
         </div>
       </div>
 
