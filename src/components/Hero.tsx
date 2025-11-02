@@ -36,7 +36,7 @@ const Hero = () => {
           {/* Scroll Indicator - Left Side (hidden on mobile) */}
           <div className="hidden lg:flex flex-col items-center gap-4 animate-fade-in">
             <div className="text-sm text-muted-foreground uppercase tracking-widest writing-mode-vertical">
-              Scroll
+              Posuň
             </div>
             <div className="animate-bounce">
               <div className="w-6 h-10 rounded-full border-2 border-primary/50 flex items-start justify-center p-2 bg-background/60 backdrop-blur-sm">
