@@ -73,7 +73,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border text-center">
+        <div className="pt-4 border-t border-border text-center">
           <p className="text-sm text-muted-foreground">
             © {currentYear} Dominik Holešovský. Všechna práva vyhrazena.
           </p>
