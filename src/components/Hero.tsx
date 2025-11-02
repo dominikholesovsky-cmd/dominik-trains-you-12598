@@ -30,7 +30,7 @@ const Hero = () => {
       </div>
 
       {/* Content Container with Scroll Indicator on Side */}
-      <div className="container mx-auto px-4 sm:px-6 z-10 relative pt-20 sm:pt-24">
+      <div className="container mx-auto px-4 sm:px-6 z-10 relative pt-12 sm:pt-24">
         <div className="flex items-center justify-center gap-8 lg:gap-16">
           
           {/* Scroll Indicator - Left Side (hidden on mobile) */}
