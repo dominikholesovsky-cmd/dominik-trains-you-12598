@@ -32,22 +32,24 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 z-10 relative pt-20 sm:pt-24">
         <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8 animate-fade-in">
-          {/* Heading */}
-          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight px-2">
-            Transformujte své tělo
-            <span className="block text-primary mt-2 sm:mt-3 text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-              s profesionálním vedením
-            </span>
-          </h1>
+          {/* Main heading - Name */}
+          <div className="space-y-3 sm:space-y-4">
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight px-2">
+              Dominik Holešovský
+            </h1>
+            <p className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary">
+              Certifikovaný trenér
+            </p>
+          </div>
 
           {/* Subheading */}
           <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4">
-            Dominik Holešovský • Certifikovaný trenér s 4+ lety praxe
+            4+ let praxe • Specialista na diagnostiku pohybového aparátu
           </p>
 
           {/* Description */}
           <p className="text-sm xs:text-base sm:text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed px-4 sm:px-6">
-            Zaměřuji se na diagnostiku pohybového aparátu, prevenci zranění a efektivní růst síly. V Monstergym Brno-Slatina vám pomůžu dosáhnout trvalých výsledků.
+            Transformujte své tělo s profesionálním vedením. Zaměřuji se na prevenci zranění, efektivní růst síly a trvalé výsledky.
           </p>
 
           {/* CTA Buttons */}
@@ -88,14 +90,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-        
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-            <div className="w-6 h-10 rounded-full border-2 border-primary/50 flex items-start justify-center p-2 bg-background/60 backdrop-blur-sm">
-              <div className="w-1 h-3 bg-primary rounded-full"></div>
-            </div>
-          </div>
 
     </section>
   );
