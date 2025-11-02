@@ -100,15 +100,17 @@ const Hero = () => {
               </div>
               <div className="space-y-1 sm:space-y-2">
                 <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">100%</div>
-                <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Profesionalita</div>
+                <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight"> Profesionalita
+                </div>
               </div>
             </div>
+          </div> {/* End Main Content */}
 
-           {/* Decorative Element */}
-            <div className="hidden lg:block w-16" />
-          </div> {/* <-- tady uzavíráme hlavní flex container */}
-        </div> {/* <-- tady uzavíráme container */}
-      </section>
+          {/* Decorative Right Element */}
+          <div className="hidden lg:block w-16" />
+        </div> {/* End Flex */}
+      </div> {/* End Container */}
+    </section>
   );
 };
 
