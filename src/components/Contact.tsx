@@ -107,7 +107,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="kontakt" className="py-12 sm:py-16 md:py-16 px-4 bg-background">
+    <section id="kontakt" className="scroll-mt-20 py-12 sm:py-16 md:py-16 px-4 bg-background">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center mb-8 sm:mb-10 md:mb-12 space-y-3 sm:space-y-4 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Domluvte si trénink</h2>
