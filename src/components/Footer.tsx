@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-card py-4 px-6">
-      <div className="container mx-auto flex justify-center items-center gap-6">
+      <div className="container mx-auto flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
 
         {/* Brand */}
         <div className="flex items-center gap-2">
@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
 
         {/* Center Text */}
-        <div className="text-sm text-white text-center">
+        <div className="text-sm text-white text-center sm:text-left">
           © {currentYear} Dominik Holešovský | IČO: 14147505 | Všechna práva vyhrazena.
         </div>
 
