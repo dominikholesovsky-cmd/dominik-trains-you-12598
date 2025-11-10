@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
 
         {/* Center Text */}
-        <div className="text-sm text-muted-foreground text-center">
+        <div className="text-sm text-white text-center">
           © {currentYear} Dominik Holešovský | IČO: 14147505 | Všechna práva vyhrazena.
         </div>
 
