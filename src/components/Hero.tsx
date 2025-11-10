@@ -52,7 +52,7 @@ const Hero = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col gap-3 w-full max-w-6xl mx-auto px-4">
+            <div className="flex flex-col gap-3 w-full max-w-4xl mx-auto px-4">
               <Button
                 size="lg"
                 variant="hero"
