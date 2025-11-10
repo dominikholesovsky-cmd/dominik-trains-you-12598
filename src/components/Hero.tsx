@@ -44,7 +44,7 @@ const Hero = () => {
             </div>
 
             <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-foreground/80 max-w-2xl mx-auto leading-relaxed">
-              4+ let praxe • Specialista na diagnostiku pohybového aparátu
+              10+ let praxe • Specialista na diagnostiku pohybového aparátu
             </p>
 
             <p className="text-sm xs:text-base sm:text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
