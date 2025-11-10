@@ -58,7 +58,7 @@ const About = () => {
                 Dominik Holešovský
               </h3>
               <p className="text-lg text-foreground/80 leading-relaxed">
-                Jsem certifikovaný osobní trenér s více než 4 lety zkušeností. Specializuji se na diagnostiku pohybového aparátu, zdravý pohyb a efektivní nárůst síly.
+                Jsem certifikovaný osobní trenér s více než 10 lety zkušeností. Specializuji se na diagnostiku pohybového aparátu, zdravý pohyb a efektivní nárůst síly.
               </p>
               <p className="text-lg text-foreground/80 leading-relaxed">
                 Můj přístup kombinuje vědecké poznatky s praktickými zkušenostmi, abych pomohl každému klientovi dosáhnout jeho cílů bezpečně a efektivně.
