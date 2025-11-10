@@ -42,9 +42,8 @@ const About = () => {
               <img
                 src="/A1_05712.webp"
                 alt="Dominik-trenér"
-                className="w-full h-[700px] object-cover"
+                className="w-full aspect-[4/5] object-cover"
               />
-              {/* <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div> */}
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-2xl font-bold">Dominik Holešovský</p>
                 <p className="text-muted-foreground">Fitness Trenér</p>
