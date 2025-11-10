@@ -59,7 +59,7 @@ const Terms = ({ onBack }: TermsProps) => {
               </div>
               <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-foreground/80">
                 <p>
-                  <strong>Správce údajů:</strong> Dominik Holešovský, osobní trenér
+                   <strong>Správce údajů:</strong> Dominik Holešovský, osobní trenér, IČO: 14147505
                 </p>
                 <p>
                   <strong>Rozsah zpracování:</strong> Zpracováváme pouze údaje, které nám poskytnete 
