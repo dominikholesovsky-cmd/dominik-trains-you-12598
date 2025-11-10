@@ -40,7 +40,7 @@ const About = () => {
           <div className="relative animate-fade-in-scale">
             <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-card)]">
               <img
-                src="/A1_05712.jpg"
+                src="/A1_05712.webp"
                 alt="Dominik-trenér"
                 className="w-full h-[700px] object-cover"
               />
