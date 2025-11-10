@@ -32,7 +32,6 @@ const Hero = () => {
       {/* Content Container */}
       <div className="container mx-auto px-4 sm:px-6 z-10 relative pt-8 sm:pt-24">
         <div className="flex flex-col items-center gap-8 lg:gap-16">
-          
           {/* Main Content */}
           <div className="max-w-5xl text-center space-y-6 sm:space-y-8 animate-fade-in">
             <div className="space-y-3 sm:space-y-4">
@@ -52,7 +51,7 @@ const Hero = () => {
               Transformujte své tělo s profesionálním vedením. Zaměřuji se na prevenci zranění, efektivní růst síly a trvalé výsledky.
             </p>
 
-            {/* CTA Buttons - same width as packages */}
+            {/* CTA Buttons */}
             <div className="flex flex-col gap-3 w-full max-w-6xl mx-auto px-4">
               <Button
                 size="lg"
@@ -66,26 +65,41 @@ const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => document.getElementById("sluzby")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() =>
+                  document.getElementById("sluzby")?.scrollIntoView({ behavior: "smooth" })
+                }
                 className="w-full text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 border-primary/50 hover:border-primary"
               >
                 Zjistit Více
               </Button>
             </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-3 xs:gap-4 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-8 p-6">
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">4+</div>
-              <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Let Zkušeností</div>
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">50+</div>
-              <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">Spokojených Klientů</div>
-            </div>
-            <div className="space-y-1 sm:space-y-2">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">100%</div>
-              <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight"> Profesionalita</div>
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-3 xs:gap-4 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-8 p-6">
+              <div className="space-y-1 sm:space-y-2">
+                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
+                  10+
+                </div>
+                <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">
+                  Let Zkušeností
+                </div>
+              </div>
+              <div className="space-y-1 sm:space-y-2">
+                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
+                  50+
+                </div>
+                <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">
+                  Spokojených Klientů
+                </div>
+              </div>
+              <div className="space-y-1 sm:space-y-2">
+                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
+                  100%
+                </div>
+                <div className="text-[10px] xs:text-xs sm:text-sm text-muted-foreground uppercase tracking-wider leading-tight">
+                  Profesionalita
+                </div>
+              </div>
             </div>
           </div>
         </div>
