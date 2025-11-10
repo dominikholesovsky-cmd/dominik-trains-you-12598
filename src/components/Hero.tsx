@@ -68,12 +68,12 @@ const Hero = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full max-w-2xl mx-auto">
               <Button
                 size="lg"
                 variant="hero"
                 onClick={scrollToContact}
-                className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
+                className="flex-1 sm:flex-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
               >
                 Domluvit První Trénink
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
@@ -82,7 +82,7 @@ const Hero = () => {
                 size="lg"
                 variant="outline"
                 onClick={() => document.getElementById("sluzby")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 border-primary/50 hover:border-primary"
+                className="flex-1 sm:flex-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 border-primary/50 hover:border-primary"
               >
                 Zjistit Více
               </Button>
