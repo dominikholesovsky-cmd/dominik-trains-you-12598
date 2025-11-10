@@ -251,8 +251,10 @@ const Contact = () => {
                           href={info.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm sm:text-base md:text-lg font-semibold hover:text-primary transition-colors break-words"
-                        >
+                          className={`text-sm sm:text-base md:text-lg font-semibold hover:text-primary transition-colors break-words ${
+                            info.title === "Posilovna" ? "underline" : ""
+                          }`}
+                          >
                           {info.value}
                         </a>
                       ) : (
