@@ -65,13 +65,16 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground overflow-x-hidden;
     font-weight: 300;
+    font-family: 'Figtree', sans-serif; /* přidáno */
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
+    font-family: 'Figtree', sans-serif; /* přidáno */
   }
   
   strong, b {
     font-weight: 500;
+    font-family: 'Figtree', sans-serif; /* nepovinné */
   }
 }
