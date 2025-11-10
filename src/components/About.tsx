@@ -26,7 +26,7 @@ const features = [
 
 const About = () => {
   return (
-    <section id="o-mne" className="py-12 px-4 bg-card">
+    <section id="o-mne" className="scroll-mt-20 py-12 px-4 bg-card">
       <div className="container mx-auto">
         <div className="text-center mb-16 space-y-4 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold">O mně</h2>
