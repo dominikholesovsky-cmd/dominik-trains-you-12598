@@ -104,11 +104,6 @@ const Contact = () => {
       value: "dominik.holesovsky@gmail.com",
       link: "mailto:dominik.holesovsky@gmail.com",
     },
-    {
-      icon: User, // nebo jiná ikona, např. Shield
-      title: "IČO",
-      value: "14147505",
-    }
   ];
 
   return (
