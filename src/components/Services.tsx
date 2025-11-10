@@ -70,7 +70,7 @@ const Services = () => {
   };
 
   return (
-    <section id="sluzby" className="py-10 sm:py-10 md:py-10 px-4 bg-card">
+    <section id="sluzby" className="scroll-mt-20 py-10 sm:py-10 md:py-10 px-4 bg-card">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-10 sm:mb-10 space-y-3 sm:space-y-4 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Služby & Ceník</h2>
