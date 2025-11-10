@@ -42,7 +42,7 @@ const About = () => {
               <img
                 src="/A1_05712.jpg"
                 alt="Dominik-trenér"
-                className="w-full h-[500px] object-cover"
+                className="w-full h-[800px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
