@@ -251,7 +251,7 @@ const Contact = () => {
                           href={info.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm sm:text-base md:text-lg font-semibold hover:text-primary transition-colors break-words underline"
+                          className="text-sm sm:text-base md:text-lg font-semibold hover:text-primary transition-colors break-words"
                         >
                           {info.value}
                         </a>
