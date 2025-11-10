@@ -70,9 +70,9 @@ const Services = () => {
   };
 
   return (
-    <section id="sluzby" className="py-16 sm:py-16 md:py-16 px-4 bg-card">
+    <section id="sluzby" className="py-10 sm:py-10 md:py-10 px-4 bg-card">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 sm:mb-16 space-y-3 sm:space-y-4 animate-fade-in">
+        <div className="text-center mb-10 sm:mb-10 space-y-3 sm:space-y-4 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Služby & Ceník</h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Transparentní ceny a jasné benefity pro vaši cestu ke zdraví
