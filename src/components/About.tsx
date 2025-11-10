@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { Award, Heart, Target, TrendingUp } from "lucide-react";
-import gymImage from "@/assets/A1_05712.jpg";
 
 const features = [
   {
@@ -41,8 +40,8 @@ const About = () => {
           <div className="relative animate-fade-in-scale">
             <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-card)]">
               <img
-                src={gymImage}
-                alt="Monstergym Slatina"
+                src="/A1_05712.jpg"
+                alt="Dominik-trenér"
                 className="w-full h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
