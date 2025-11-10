@@ -90,6 +90,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Posilovna",
       value: "MonsterGym, Brno - Slatina",
+      link: "https://www.google.com/maps/place/MONSTER+Gym/@49.1764238,16.6829687,17z/data=!4m12!1m5!3m4!2zNDnCsDEwJzM1LjEiTiAxNsKwNDEnMDguMCJF!8m2!3d49.1764238!4d16.6855436!3m5!1s0x4712eb20d82b1b19:0xa108cd5891f7fd3e!8m2!3d49.1764238!4d16.6881185!16s%2Fg%2F11g6nr25xm?entry=ttu&g_ep=EgoyMDI1MTEwNC4xIKXMDSoASAFQAw%3D%3D",
     },
     {
       icon: Phone,
@@ -248,6 +249,8 @@ const Contact = () => {
                       {info.link ? (
                         <a
                           href={info.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="text-sm sm:text-base md:text-lg font-semibold hover:text-primary transition-colors break-words"
                         >
                           {info.value}
