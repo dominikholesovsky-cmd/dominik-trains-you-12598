@@ -46,8 +46,8 @@ const About = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-2xl font-bold">Monstergym</p>
-                <p className="text-muted-foreground">Brno - Slatina</p>
+                <p className="text-2xl font-bold">Dominik Holešovský</p>
+                <p className="text-muted-foreground">Fitness Trenér</p>
               </div>
             </div>
           </div>
