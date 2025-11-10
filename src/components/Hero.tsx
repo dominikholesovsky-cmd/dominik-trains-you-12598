@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-trainer.jpg";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -17,9 +16,10 @@ const Hero = () => {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url(${heroImage})`,
+            backgroundImage: "url('/A1_05712.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background"></div>
