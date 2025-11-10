@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Award, Heart, Target, TrendingUp } from "lucide-react";
-import gymImage from "@/assets/gym-interior.jpg";
+import gymImage from "@/assets/A1_05712.jpg";
 
 const features = [
   {
