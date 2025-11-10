@@ -11,8 +11,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-card border-t border-border py-4 px-4">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+    <footer className="bg-card py-4 px-6">
+      <div className="container mx-auto flex justify-between items-center gap-6">
 
         {/* Brand */}
         <div className="flex items-center gap-2">
@@ -22,8 +22,13 @@ const Footer = () => {
           <span className="font-bold text-xl">Dominik Holešovský</span>
         </div>
 
-        {/* Contact Items */}
-        <div className="flex flex-wrap items-center gap-6">
+        {/* Center Text */}
+        <div className="text-center text-sm text-muted-foreground flex-1">
+          © {currentYear} Dominik Holešovský | IČO: 14147505 | Všechna práva vyhrazena.
+        </div>
+
+        {/* Contact Grid (2 columns) */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-1">
           {contactItems.map((item, index) => {
             const Icon = item.icon;
             return (
@@ -32,7 +37,7 @@ const Footer = () => {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors underline"
+                className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Icon className="w-4 h-4 text-primary flex-shrink-0" />
                 <span>{item.label}</span>
@@ -41,11 +46,6 @@ const Footer = () => {
           })}
         </div>
 
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="pt-4 border-t border-border text-center text-sm text-muted-foreground">
-        © {currentYear} Dominik Holešovský | IČO: 14147505 | Všechna práva vyhrazena.
       </div>
     </footer>
   );
