@@ -53,7 +53,7 @@ const Hero = () => {
             </p>
 
             {/* CTA Buttons - same width as packages */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full max-w-6xl mx-auto px-4">
+            <div className="flex flex-col gap-3 w-full max-w-6xl mx-auto px-4">
               <Button
                 size="lg"
                 variant="hero"
@@ -72,7 +72,6 @@ const Hero = () => {
                 Zjistit Více
               </Button>
             </div>
-          </div>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-3 xs:gap-4 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-8 p-6">
