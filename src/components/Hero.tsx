@@ -22,7 +22,7 @@ const Hero = () => {
             backgroundRepeat: "no-repeat",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/85 to-background"></div>
         
         {/* Subtle floating orbs */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-50"></div>
