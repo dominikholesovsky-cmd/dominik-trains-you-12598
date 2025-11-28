@@ -20,9 +20,14 @@ const Navigation = () => {
     { label: "Služby", href: "#sluzby" },
     { label: "Reference", href: "#reference" },
     { label: "O mně", href: "#o-mne" },
+    { label: "Posilovna", href: "http://www.monstergym.cz/", external: true },
   ];
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (href: string, external?: boolean) => {
+    if (external) {
+      window.open(href, "_blank");
+      return;
+    }
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: "smooth" });
     setIsMobileMenuOpen(false);
@@ -32,9 +37,7 @@ const Navigation = () => {
     <>
       <nav
         className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 px-2 ${
-          isScrolled
-            ? "w-full max-w-7xl"
-            : "w-full max-w-6xl"
+          isScrolled ? "w-full max-w-7xl" : "w-full max-w-6xl"
         }`}
       >
         <div
@@ -44,11 +47,9 @@ const Navigation = () => {
               : "bg-background/60 backdrop-blur-md border-border/50"
           }`}
         >
-          {/* Animated gradient border effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-0 hover:opacity-10 transition-opacity duration-500 bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]" />
-          
+
           <div className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-18">
-            {/* Logo with Icon */}
             <button
               onClick={() => scrollToSection("#uvod")}
               className="flex items-center gap-2 font-bold text-sm sm:text-base lg:text-lg hover:text-primary transition-all group"
@@ -59,21 +60,19 @@ const Navigation = () => {
               <span>Dominik Holešovský</span>
             </button>
 
-            {/* Desktop Navigation - Center */}
             <div className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
               {navItems.map((item) => (
                 <button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => scrollToSection(item.href, item.external)}
                   className="relative px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors group"
                 >
-                  {item.label}
+                  {item.label} {item.external && (<ExternalLink className="inline-block w-4 h-4 ml-1 opacity-70 group-hover:opacity-100" />)}
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-3/4" />
                 </button>
               ))}
             </div>
 
-            {/* Desktop Right Side - CTA + Social */}
             <div className="hidden lg:flex items-center gap-3">
               <a
                 href="https://www.instagram.com/dominik.holesovsky/"
@@ -103,7 +102,6 @@ const Navigation = () => {
               </Button>
             </div>
 
-            {/* Mobile/Tablet Right Side */}
             <div className="flex lg:hidden items-center gap-2 sm:gap-3">
               <a
                 href="tel:+420725961371"
@@ -128,31 +126,28 @@ const Navigation = () => {
         </div>
       </nav>
 
-      {/* Modern Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
-          {/* Backdrop */}
           <div
             className="absolute inset-0 bg-background/95 backdrop-blur-xl"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          
-          {/* Menu Content */}
+
           <div className="relative h-full flex flex-col items-center justify-center p-8 animate-fade-in">
             <div className="w-full max-w-sm space-y-2">
               {navItems.map((item, index) => (
                 <button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => scrollToSection(item.href, item.external)}
                   className="w-full text-left px-6 py-4 rounded-xl hover:bg-primary/10 transition-all duration-300 group border border-transparent hover:border-primary/20"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <span className="text-xl font-semibold text-foreground/80 group-hover:text-primary transition-colors">
-                    {item.label}
+                    {item.label} {item.external && (<ExternalLink className="inline-block w-4 h-4 ml-1 opacity-70 group-hover:opacity-100" />)}
                   </span>
                 </button>
               ))}
-              
+
               <div className="pt-4 space-y-3">
                 <Button
                   variant="hero"
@@ -161,7 +156,7 @@ const Navigation = () => {
                 >
                   Domluvit Trénink
                 </Button>
-                
+
                 <a
                   href="https://www.instagram.com/dominik.holesovsky/"
                   target="_blank"
