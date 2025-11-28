@@ -3,17 +3,17 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Petra K.",
+    name: "Věra",
     text: "S Dominikem jsem konečně pochopila správnou techniku a po letech bolestí zad se cítím skvěle. Jeho přístup je velmi profesionální a motivující.",
     result: "Zbavila se bolestí zad",
   },
   {
-    name: "Martin S.",
+    name: "Tomáš",
     text: "Skvělý trenér, který má znalosti a umí je předat. Díky jeho diagnostice jsem zlepšil svůj výkon a zvýšil sílu bezpečným způsobem.",
-    result: "Zvýšení síly o 30%",
+    result: "Zvednout na Benchpress 100kg",
   },
   {
-    name: "Jana M.",
+    name: "Hana",
     text: "Dominik je velmi trpělivý a dokáže vše srozumitelně vysvětlit. Tréninkový plán na míru mi pomohl dosáhnout cílů, které jsem si stanovila.",
     result: "Dosažení fitness cílů",
   },
