@@ -1,97 +1,69 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Activity, Calendar, ClipboardList, Check, Sparkles } from "lucide-react";
+import { Activity, ClipboardList, Check, Sparkles } from "lucide-react";
 import { useState } from "react";
-
-const services = [
-  {
-    icon: Activity,
-    title: "Osobní Trénink",
-    description: "Komplexní přístup zaměřený na diagnostiku, zdravý pohyb a efektivní zvýšení síly.",
-    price: "600 Kč",
-    unit: "60 minut",
-    benefits: [
-      "Důkladná analýza pohybových vzorců",
-      "Individuální tréninkový plán",
-      "Prevence zranění",
-      "Maximální efektivita",
-    ],
-  },
-  {
-    icon: ClipboardList,
-    title: "Tréninkový Plán",
-    description: "Profesionální plán ušitý přímo pro vaše potřeby a cíle.\n",
-    price: "1 000 Kč",
-    unit: "3 měsíce",
-    benefits: [
-      "Přesně podle vašich cílů",
-      "Platnost 3 měsíce",
-      "Online konzultace",
-      "Kompletní instrukce",
-    ],
-  },
-];
-
-const packages = [
-  {
-    title: "Balíček 5 Tréninků",
-    price: "2 800 Kč",
-    originalPrice: "3 000 Kč",
-    savings: "200 Kč",
-    perSession: "560 Kč/trénink",
-    benefits: [
-      "5 osobních tréninků",
-      "Flexibilní termíny",
-      "Platnost 2 měsíce",
-      "Ušetříte 200 Kč",
-    ],
-  },
-  {
-    title: "Balíček 10 Tréninků",
-    price: "5 400 Kč",
-    originalPrice: "6 000 Kč",
-    savings: "600 Kč - 1 trénink",
-    perSession: "540 Kč/trénink",
-    popular: true,
-    benefits: [
-      "10 osobních tréninků",
-      "Flexibilní termíny",
-      "Platnost 4 měsíce",
-      "Ušetříte 600 Kč",
-    ],
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Services = () => {
   const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
-  
+  const { t } = useLanguage();
+
   const scrollToContact = () => {
     document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const services = [
+    {
+      icon: Activity,
+      title: t("services.personalTraining"),
+      description: t("services.personalDesc"),
+      price: t("services.personalPrice"),
+      unit: t("services.personalUnit"),
+      benefits: [t("services.personalB1"), t("services.personalB2"), t("services.personalB3"), t("services.personalB4")],
+    },
+    {
+      icon: ClipboardList,
+      title: t("services.trainingPlan"),
+      description: t("services.planDesc"),
+      price: t("services.planPrice"),
+      unit: t("services.planUnit"),
+      benefits: [t("services.planB1"), t("services.planB2"), t("services.planB3"), t("services.planB4")],
+    },
+  ];
+
+  const packages = [
+    {
+      title: t("services.pack5title"),
+      price: t("services.pack5price"),
+      originalPrice: t("services.pack5original"),
+      savings: t("services.pack5savings"),
+      perSession: t("services.pack5per"),
+      benefits: [t("services.pack5b1"), t("services.pack5b2"), t("services.pack5b3"), t("services.pack5b4")],
+    },
+    {
+      title: t("services.pack10title"),
+      price: t("services.pack10price"),
+      originalPrice: t("services.pack10original"),
+      savings: t("services.pack10savings"),
+      perSession: t("services.pack10per"),
+      popular: true,
+      benefits: [t("services.pack10b1"), t("services.pack10b2"), t("services.pack10b3"), t("services.pack10b4")],
+    },
+  ];
 
   return (
     <section id="sluzby" className="scroll-mt-20 py-10 sm:py-10 md:py-10 px-4 bg-card">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-10 sm:mb-10 space-y-3 sm:space-y-4 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Služby & Ceník</h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-            Transparentní ceny a jasné benefity pro vaši cestu ke zdraví
-          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">{t("services.title")}</h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">{t("services.subtitle")}</p>
         </div>
 
-        {/* Individual Services */}
         <div className="grid sm:grid-cols-2 gap-5 sm:gap-6 mb-10 sm:mb-12">
           {services.map((service, index) => (
-            <Card
-              key={index}
-              className="p-5 sm:p-6 bg-secondary border-border hover:border-primary/50 transition-all duration-300 animate-fade-in-scale flex flex-col h-full"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Flex container uvnitř */}
+            <Card key={index} className="p-5 sm:p-6 bg-secondary border-border hover:border-primary/50 transition-all duration-300 animate-fade-in-scale flex flex-col h-full" style={{ animationDelay: `${index * 0.1}s` }}>
               <div className="flex flex-col justify-between h-full space-y-3 sm:space-y-4">
-                {/* Horní část – obsah */}
                 <div>
-                  {/* Icon & Title */}
                   <div className="flex items-start justify-between gap-3 mb-3 sm:mb-4">
                     <div className="flex items-center gap-2 sm:gap-3">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
@@ -106,13 +78,7 @@ const Services = () => {
                       <div className="text-lg xs:text-xl sm:text-2xl font-bold text-primary break-all">{service.price}</div>
                     </div>
                   </div>
-
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
-                    {service.description}
-                  </p>
-
-                  {/* Benefits */}
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{service.description}</p>
                   <ul className="space-y-1.5 sm:space-y-2 mt-3 sm:mt-4">
                     {service.benefits.map((benefit, idx) => (
                       <li key={idx} className="flex items-start gap-2">
@@ -122,48 +88,34 @@ const Services = () => {
                     ))}
                   </ul>
                 </div>
-
-                {/* Spodní část – tlačítko zarovnané dolů */}
-                <Button
-                  variant="hero"
-                  className="w-full mt-4 font-semibold"
-                  onClick={scrollToContact}
-                >
-                  Objednat Trénink
-                </Button>
+                <Button variant="hero" className="w-full mt-4 font-semibold" onClick={scrollToContact}>{t("services.orderTraining")}</Button>
               </div>
             </Card>
           ))}
         </div>
 
-        {/* Package Heading */}
         <div className="text-center mb-6 sm:mb-10">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">Výhodné Balíčky</h3>
-          <p className="text-xs sm:text-sm text-muted-foreground">Ušetřete při předplacení více tréninků</p>
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">{t("services.packagesTitle")}</h3>
+          <p className="text-xs sm:text-sm text-muted-foreground">{t("services.packagesSubtitle")}</p>
         </div>
 
-        {/* Packages */}
         <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
           {packages.map((pkg, index) => (
             <Card
               key={index}
               onClick={() => setSelectedPackage(selectedPackage === index ? null : index)}
               className={`p-5 sm:p-6 relative overflow-hidden transition-all duration-300 animate-fade-in-scale cursor-pointer ${
-                selectedPackage === index
-                  ? "shadow-[var(--shadow-glow)] bg-primary/10 border-primary"
-                  : "bg-secondary border-border hover:border-primary/30"
+                selectedPackage === index ? "shadow-[var(--shadow-glow)] bg-primary/10 border-primary" : "bg-secondary border-border hover:border-primary/30"
               }`}
               style={{ animationDelay: `${(index + 2) * 0.1}s` }}
             >
               {pkg.popular && (
                 <div className="absolute top-3 right-3 bg-primary text-primary-foreground px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg z-10">
                   <Sparkles className="w-3 h-3" />
-                  <span className="whitespace-nowrap">NEJOBLÍBENĚJŠÍ</span>
+                  <span className="whitespace-nowrap">{t("services.mostPopular")}</span>
                 </div>
               )}
-
               <div className="space-y-3 sm:space-y-4">
-                {/* Title & Price */}
                 <div className="pt-7 sm:pt-8">
                   <h3 className="text-lg sm:text-xl font-bold mb-1.5">{pkg.title}</h3>
                   <div className="flex items-baseline gap-2 flex-wrap">
@@ -172,13 +124,9 @@ const Services = () => {
                   </div>
                   <p className="text-xs text-primary font-semibold mt-1">{pkg.perSession}</p>
                 </div>
-
-                {/* Savings Badge */}
                 <div className="inline-block bg-primary/20 border border-primary/30 rounded-lg px-2.5 sm:px-3 py-1.5">
-                  <span className="text-xs sm:text-sm font-bold text-primary">💰 Ušetříte {pkg.savings}</span>
+                  <span className="text-xs sm:text-sm font-bold text-primary">💰 {t("services.save")} {pkg.savings}</span>
                 </div>
-
-                {/* Benefits */}
                 <ul className="space-y-1.5 sm:space-y-2">
                   {pkg.benefits.map((benefit, idx) => (
                     <li key={idx} className="flex items-start gap-2">
@@ -187,29 +135,17 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
-
-                <Button
-                  variant={pkg.popular ? "hero" : "outline"}
-                  className="w-full font-semibold"
-                  onClick={scrollToContact}
-                >
-                  Objednat Balíček
-                </Button>
+                <Button variant={pkg.popular ? "hero" : "outline"} className="w-full font-semibold" onClick={scrollToContact}>{t("services.orderPackage")}</Button>
               </div>
             </Card>
           ))}
         </div>
 
-        {/* CTA Section */}
         <div className="mt-10 sm:mt-12 text-center">
           <Card className="p-5 sm:p-6 bg-primary/10 border-primary/30 max-w-2xl mx-auto">
-            <h4 className="text-lg sm:text-xl font-bold mb-2">První konzultace ZDARMA! 🎁</h4>
-            <p className="text-xs sm:text-sm text-foreground/80 mb-3 sm:mb-4">
-              Domluvte si nezávaznou konzultaci a seznamovací trénink zdarma. Společně nastavíme váš plán.
-            </p>
-            <Button variant="hero" size="lg" onClick={scrollToContact} className="w-full sm:w-auto">
-              Chci Konzultaci Zdarma
-            </Button>
+            <h4 className="text-lg sm:text-xl font-bold mb-2">{t("services.freeConsultation")}</h4>
+            <p className="text-xs sm:text-sm text-foreground/80 mb-3 sm:mb-4">{t("services.freeConsultationDesc")}</p>
+            <Button variant="hero" size="lg" onClick={scrollToContact} className="w-full sm:w-auto">{t("services.wantFree")}</Button>
           </Card>
         </div>
       </div>

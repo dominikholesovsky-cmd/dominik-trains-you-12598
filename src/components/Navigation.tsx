@@ -1,26 +1,28 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Dumbbell, Instagram, Phone, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitch from "./LanguageSwitch";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { label: "Úvod", href: "#uvod" },
-    { label: "Služby", href: "#sluzby" },
-    { label: "Reference", href: "#reference" },
-    { label: "O mně", href: "#o-mne" },
-    { label: "Posilovna", href: "http://www.monstergym.cz/", external: true },
+    { label: t("nav.intro"), href: "#uvod" },
+    { label: t("nav.services"), href: "#sluzby" },
+    { label: t("nav.references"), href: "#reference" },
+    { label: t("nav.about"), href: "#o-mne" },
+    { label: t("nav.gym"), href: "http://www.monstergym.cz/", external: true },
   ];
 
   const scrollToSection = (href: string, external?: boolean) => {
@@ -74,6 +76,7 @@ const Navigation = () => {
             </div>
 
             <div className="hidden lg:flex items-center gap-3">
+              <LanguageSwitch />
               <a
                 href="https://www.instagram.com/dominik.holesovsky/"
                 target="_blank"
@@ -86,7 +89,7 @@ const Navigation = () => {
               <a
                 href="tel:+420725961371"
                 className="p-2 rounded-lg hover:bg-primary/10 transition-colors group"
-                aria-label="Telefon"
+                aria-label={t("nav.phone")}
               >
                 <Phone className="w-5 h-5 text-foreground/60 group-hover:text-primary transition-colors" />
               </a>
@@ -97,16 +100,17 @@ const Navigation = () => {
                 onClick={() => scrollToSection("#kontakt")}
                 className="relative overflow-hidden group"
               >
-                <span className="relative z-10">Domluvit Trénink</span>
+                <span className="relative z-10">{t("nav.bookTraining")}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Button>
             </div>
 
             <div className="flex lg:hidden items-center gap-2 sm:gap-3">
+              <LanguageSwitch />
               <a
                 href="tel:+420725961371"
                 className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
-                aria-label="Telefon"
+                aria-label={t("nav.phone")}
               >
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-foreground/60" />
               </a>
@@ -132,7 +136,6 @@ const Navigation = () => {
             className="absolute inset-0 bg-background/95 backdrop-blur-xl"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-
           <div className="relative h-full flex flex-col items-center justify-center p-8 animate-fade-in">
             <div className="w-full max-w-sm space-y-2">
               {navItems.map((item, index) => (
@@ -147,16 +150,14 @@ const Navigation = () => {
                   </span>
                 </button>
               ))}
-
               <div className="pt-4 space-y-3">
                 <Button
                   variant="hero"
                   className="w-full text-lg py-6"
                   onClick={() => scrollToSection("#kontakt")}
                 >
-                  Domluvit Trénink
+                  {t("nav.bookTraining")}
                 </Button>
-
                 <a
                   href="https://www.instagram.com/dominik.holesovsky/"
                   target="_blank"
