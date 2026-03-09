@@ -1,18 +1,33 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Globe } from "lucide-react";
 
 const LanguageSwitch = () => {
   const { lang, setLang } = useLanguage();
 
   return (
-    <button
-      onClick={() => setLang(lang === "cs" ? "en" : "cs")}
-      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border/50 hover:border-primary/50 bg-secondary/50 hover:bg-secondary transition-all duration-200 text-xs font-semibold uppercase tracking-wide"
-      aria-label={lang === "cs" ? "Switch to English" : "Přepnout do češtiny"}
-    >
-      <span className={lang === "cs" ? "text-primary" : "text-muted-foreground"}>CZ</span>
-      <span className="text-border">/</span>
-      <span className={lang === "en" ? "text-primary" : "text-muted-foreground"}>EN</span>
-    </button>
+    <div className="flex items-center gap-1">
+      <Globe className="w-4 h-4 text-muted-foreground" />
+      <button
+        onClick={() => setLang("cs")}
+        className={`px-2 py-1 rounded text-xs font-bold uppercase tracking-wide transition-all duration-200 ${
+          lang === "cs"
+            ? "bg-primary text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground"
+        }`}
+      >
+        CZ
+      </button>
+      <button
+        onClick={() => setLang("en")}
+        className={`px-2 py-1 rounded text-xs font-bold uppercase tracking-wide transition-all duration-200 ${
+          lang === "en"
+            ? "bg-primary text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground"
+        }`}
+      >
+        EN
+      </button>
+    </div>
   );
 };
 

@@ -176,6 +176,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.years": "Years of Experience",
     "hero.clients": "Satisfied Clients",
     "hero.professionalism": "Professionalism",
+    "hero.enBadge": "🇬🇧 I also train English-speaking clients",
 
     // Services
     "services.title": "Services & Pricing",
