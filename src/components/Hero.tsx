@@ -22,10 +22,6 @@ const Hero = () => {
         <div className="flex flex-col items-center gap-8 lg:gap-16">
           <div className="max-w-5xl text-center space-y-6 sm:space-y-8 animate-fade-in">
             <div className="space-y-3 sm:space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs sm:text-sm font-medium">
-                <Globe className="w-3.5 h-3.5" />
-                {t("hero.enBadge")}
-              </div>
               <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-tight px-2">
                 {t("hero.title")}
               </h1>
