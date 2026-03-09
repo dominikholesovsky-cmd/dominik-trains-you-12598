@@ -29,6 +29,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.years": "Let Zkušeností",
     "hero.clients": "Spokojených Klientů",
     "hero.professionalism": "Profesionalita",
+    "hero.enBadge": "🇬🇧 Trénuji i anglicky mluvící klienty",
 
     // Services
     "services.title": "Služby & Ceník",
