@@ -76,7 +76,6 @@ const Navigation = () => {
             </div>
 
             <div className="hidden lg:flex items-center gap-3">
-              <LanguageSwitch />
               <a
                 href="https://www.instagram.com/dominik.holesovsky/"
                 target="_blank"
