@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Dumbbell, Instagram, Phone, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageSwitch from "./LanguageSwitch";
+
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -76,7 +76,6 @@ const Navigation = () => {
             </div>
 
             <div className="hidden lg:flex items-center gap-3">
-              <LanguageSwitch />
               <a
                 href="https://www.instagram.com/dominik.holesovsky/"
                 target="_blank"
@@ -106,7 +105,6 @@ const Navigation = () => {
             </div>
 
             <div className="flex lg:hidden items-center gap-2 sm:gap-3">
-              <LanguageSwitch />
               <a
                 href="tel:+420725961371"
                 className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
@@ -150,11 +148,6 @@ const Navigation = () => {
                   </span>
                 </button>
               ))}
-              <div className="flex justify-center py-2">
-                <span className="bg-accent text-accent-foreground text-sm font-bold px-4 py-2 rounded-full shadow-lg animate-pulse">
-                  🇬🇧 {t("hero.enBadge")}
-                </span>
-              </div>
               <div className="pt-4 space-y-3">
                 <Button
                   variant="hero"
