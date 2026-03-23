@@ -105,7 +105,6 @@ const Navigation = () => {
             </div>
 
             <div className="flex lg:hidden items-center gap-2 sm:gap-3">
-              <LanguageSwitch />
               <a
                 href="tel:+420725961371"
                 className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
