@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Dumbbell, Instagram, Phone, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-
+import LanguageSwitch from "./LanguageSwitch";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,7 +38,7 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`fixed top-10 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 px-2 ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 px-2 ${
           isScrolled ? "w-full max-w-7xl" : "w-full max-w-6xl"
         }`}
       >
@@ -51,7 +51,8 @@ const Navigation = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-0 hover:opacity-10 transition-opacity duration-500 bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]" />
 
-          <div className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-18">
+          {/* Row 1: Logo + Nav + Actions */}
+          <div className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 h-14 sm:h-16">
             <button
               onClick={() => scrollToSection("#uvod")}
               className="flex items-center gap-2 font-bold text-sm sm:text-base lg:text-lg hover:text-primary transition-all group"
@@ -124,6 +125,14 @@ const Navigation = () => {
                 )}
               </button>
             </div>
+          </div>
+
+          {/* Row 2: Language switcher + EN badge */}
+          <div className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 pb-2 -mt-1">
+            <span className="text-[10px] sm:text-[11px] text-muted-foreground/60">
+              {t("hero.enBadge")}
+            </span>
+            <LanguageSwitch />
           </div>
         </div>
       </nav>

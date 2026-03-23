@@ -7,7 +7,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import CookieBanner from "@/components/CookieBanner";
-import LanguageSwitch from "@/components/LanguageSwitch";
 
 const Index = () => {
   return (
@@ -30,7 +29,6 @@ const Index = () => {
         </div>
 
       {/* EXISTUJÍCÍ VIZUÁLNÍ LAYOUT */}
-      <LanguageSwitch />
       <Navigation />
       <main>
         <Hero />
