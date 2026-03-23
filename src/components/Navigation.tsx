@@ -148,11 +148,6 @@ const Navigation = () => {
                   </span>
                 </button>
               ))}
-              <div className="flex justify-center py-2">
-                <span className="bg-accent text-accent-foreground text-sm font-bold px-4 py-2 rounded-full shadow-lg animate-pulse">
-                  🇬🇧 {t("hero.enBadge")}
-                </span>
-              </div>
               <div className="pt-4 space-y-3">
                 <Button
                   variant="hero"
