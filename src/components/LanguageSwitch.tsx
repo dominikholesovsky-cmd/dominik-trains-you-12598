@@ -1,42 +1,32 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Globe } from "lucide-react";
 
 const LanguageSwitch = () => {
-  const { lang, setLang, t } = useLanguage();
+  const { lang, setLang } = useLanguage();
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] bg-card/80 backdrop-blur-md border-b border-border/40">
-      <div className="container mx-auto flex items-center justify-between px-4 py-1.5">
-        {/* EN speaking badge */}
-        <span className="text-[11px] sm:text-xs text-muted-foreground">
-          🇬🇧 {t("hero.enBadge")}
-        </span>
-
-        {/* Switcher */}
-        <div className="flex items-center gap-1">
-          <Globe className="w-3.5 h-3.5 text-muted-foreground" />
-          <button
-            onClick={() => setLang("cs")}
-            className={`px-2 py-0.5 rounded text-[11px] sm:text-xs font-bold uppercase tracking-wide transition-all duration-200 ${
-              lang === "cs"
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            CZ
-          </button>
-          <button
-            onClick={() => setLang("en")}
-            className={`px-2 py-0.5 rounded text-[11px] sm:text-xs font-bold uppercase tracking-wide transition-all duration-200 ${
-              lang === "en"
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            EN
-          </button>
-        </div>
-      </div>
+    <div className="flex items-center gap-1.5">
+      <span className="text-[10px] sm:text-[11px] text-muted-foreground/70">🇬🇧</span>
+      <button
+        onClick={() => setLang("cs")}
+        className={`text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 ${
+          lang === "cs"
+            ? "text-primary"
+            : "text-muted-foreground/50 hover:text-foreground/70"
+        }`}
+      >
+        CZ
+      </button>
+      <span className="text-muted-foreground/30 text-[10px]">/</span>
+      <button
+        onClick={() => setLang("en")}
+        className={`text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 ${
+          lang === "en"
+            ? "text-primary"
+            : "text-muted-foreground/50 hover:text-foreground/70"
+        }`}
+      >
+        EN
+      </button>
     </div>
   );
 };
