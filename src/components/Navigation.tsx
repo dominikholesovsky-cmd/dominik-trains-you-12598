@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Dumbbell, Instagram, Phone, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageSwitch from "./LanguageSwitch";
+
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
