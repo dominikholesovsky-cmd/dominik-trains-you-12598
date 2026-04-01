@@ -22,7 +22,7 @@ const Hero = () => {
         <div className="flex flex-col items-center gap-8 lg:gap-16">
           <div className="max-w-5xl text-center space-y-6 sm:space-y-8 animate-fade-in">
             <div className="space-y-3 sm:space-y-4">
-              <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-tight px-2">
+              <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-tight px-2 pt-8">
                 {t("hero.title")}
               </h1>
               <p className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary">
