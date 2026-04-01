@@ -4,25 +4,25 @@ const LanguageSwitch = () => {
   const { lang, setLang } = useLanguage();
 
   return (
-    <div className="flex items-center gap-1.5">
-      <span className="text-[10px] sm:text-[11px] text-muted-foreground/70">🇬🇧</span>
+    <div className="relative inline-flex items-center bg-muted/60 rounded-full p-0.5 border border-border/40">
+      {/* Sliding indicator */}
+      <div
+        className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-primary shadow-sm transition-all duration-300 ease-out ${
+          lang === "cs" ? "left-0.5" : "left-[calc(50%+2px)]"
+        }`}
+      />
       <button
         onClick={() => setLang("cs")}
-        className={`text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 ${
-          lang === "cs"
-            ? "text-primary"
-            : "text-muted-foreground/50 hover:text-foreground/70"
+        className={`relative z-10 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full transition-colors duration-300 ${
+          lang === "cs" ? "text-primary-foreground" : "text-muted-foreground/60 hover:text-foreground/80"
         }`}
       >
         CZ
       </button>
-      <span className="text-muted-foreground/30 text-[10px]">/</span>
       <button
         onClick={() => setLang("en")}
-        className={`text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 ${
-          lang === "en"
-            ? "text-primary"
-            : "text-muted-foreground/50 hover:text-foreground/70"
+        className={`relative z-10 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full transition-colors duration-300 ${
+          lang === "en" ? "text-primary-foreground" : "text-muted-foreground/60 hover:text-foreground/80"
         }`}
       >
         EN
