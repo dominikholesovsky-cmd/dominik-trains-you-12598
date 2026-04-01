@@ -13,25 +13,47 @@ const images = [
 const About = () => {
   const { t } = useLanguage();
   const [current, setCurrent] = useState(0);
-  const [fade, setFade] = useState(true);
 
-  const goTo = useCallback((next: number) => {
-    setFade(false);
-    setTimeout(() => {
-      setCurrent(next);
-      setFade(true);
-    }, 200);
-  }, []);
-
-  const prev = () => goTo(current === 0 ? images.length - 1 : current - 1);
-  const next = () => goTo(current === images.length - 1 ? 0 : current + 1);
+  const prev = useCallback(() => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1)), []);
+  const next = useCallback(() => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1)), []);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      goTo((current + 1) % images.length);
-    }, 4000);
+    const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
-  }, [current, goTo]);
+  }, [next]);
+
+  const getCardStyle = (index: number) => {
+    const total = images.length;
+    let diff = index - current;
+    if (diff > total / 2) diff -= total;
+    if (diff < -total / 2) diff += total;
+
+    const absDiff = Math.abs(diff);
+
+    if (absDiff === 0) {
+      return {
+        transform: "translateX(0) scale(1)",
+        opacity: 1,
+        zIndex: 30,
+        filter: "brightness(1)",
+      };
+    }
+    if (absDiff === 1) {
+      const dir = diff > 0 ? 1 : -1;
+      return {
+        transform: `translateX(${dir * 60}px) scale(0.9)`,
+        opacity: 0.6,
+        zIndex: 20,
+        filter: "brightness(0.7)",
+      };
+    }
+    return {
+      transform: `translateX(${diff > 0 ? 90 : -90}px) scale(0.8)`,
+      opacity: 0.3,
+      zIndex: 10,
+      filter: "brightness(0.5)",
+    };
+  };
 
   const features = [
     { icon: Award, title: t("about.certTitle"), description: t("about.certDesc") },
@@ -48,40 +70,54 @@ const About = () => {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t("about.subtitle")}</p>
         </div>
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          <div className="relative animate-fade-in-scale group">
-            <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-card)]">
-              <img
-                src={images[current].src}
-                alt={images[current].alt}
-                className={`w-full aspect-[4/5] object-cover transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"}`}
-              />
-              <div className="absolute bottom-6 left-6 right-6">
+          <div className="relative animate-fade-in-scale">
+            {/* Stacked carousel */}
+            <div className="relative w-full aspect-[4/5] mx-auto max-w-md">
+              {images.map((img, i) => (
+                <div
+                  key={i}
+                  className="absolute inset-0 rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+                  style={{
+                    ...getCardStyle(i),
+                    transition: "all 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
+                  }}
+                  onClick={() => setCurrent(i)}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+              {/* Name overlay on active */}
+              <div className="absolute bottom-6 left-6 right-6 z-40 pointer-events-none">
                 <p className="text-2xl font-bold">{t("about.name")}</p>
                 <p className="text-muted-foreground">{t("about.role")}</p>
               </div>
+              {/* Arrows */}
+              <button
+                onClick={prev}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-40 w-8 h-8 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center hover:bg-background/80 transition-colors"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="w-4 h-4 text-foreground" />
+              </button>
+              <button
+                onClick={next}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-40 w-8 h-8 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center hover:bg-background/80 transition-colors"
+                aria-label="Next"
+              >
+                <ChevronRight className="w-4 h-4 text-foreground" />
+              </button>
             </div>
-            {/* Minimal nav arrows */}
-            <button
-              onClick={prev}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-              aria-label="Previous"
-            >
-              <ChevronLeft className="w-4 h-4 text-foreground" />
-            </button>
-            <button
-              onClick={next}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-              aria-label="Next"
-            >
-              <ChevronRight className="w-4 h-4 text-foreground" />
-            </button>
             {/* Dots */}
-            <div className="flex justify-center gap-1.5 mt-3">
+            <div className="flex justify-center gap-2 mt-4">
               {images.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`w-1.5 h-1.5 rounded-full transition-all ${i === current ? "bg-primary w-4" : "bg-muted-foreground/30"}`}
+                  className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? "bg-primary w-6" : "bg-muted-foreground/30 w-1.5"}`}
                   aria-label={`Slide ${i + 1}`}
                 />
               ))}
