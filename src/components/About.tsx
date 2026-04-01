@@ -13,9 +13,25 @@ const images = [
 const About = () => {
   const { t } = useLanguage();
   const [current, setCurrent] = useState(0);
+  const [fade, setFade] = useState(true);
 
-  const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
-  const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+  const goTo = useCallback((next: number) => {
+    setFade(false);
+    setTimeout(() => {
+      setCurrent(next);
+      setFade(true);
+    }, 200);
+  }, []);
+
+  const prev = () => goTo(current === 0 ? images.length - 1 : current - 1);
+  const next = () => goTo(current === images.length - 1 ? 0 : current + 1);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      goTo((current + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [current, goTo]);
 
   const features = [
     { icon: Award, title: t("about.certTitle"), description: t("about.certDesc") },
