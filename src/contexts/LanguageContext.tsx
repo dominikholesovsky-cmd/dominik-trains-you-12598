@@ -29,7 +29,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.years": "Let Zkušeností",
     "hero.clients": "Spokojených Klientů",
     "hero.professionalism": "Profesionalita",
-    "hero.enBadge": "🇬🇧 Trénuji i anglicky mluvící klienty",
+    "hero.enBadge": "Trénuji i anglicky mluvící klienty",
 
     // Services
     "services.title": "Služby & Ceník",
@@ -176,7 +176,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.years": "Years of Experience",
     "hero.clients": "Satisfied Clients",
     "hero.professionalism": "Professionalism",
-    "hero.enBadge": "🇬🇧 I also train English-speaking clients",
+    "hero.enBadge": "I also train English-speaking clients",
 
     // Services
     "services.title": "Services & Pricing",
