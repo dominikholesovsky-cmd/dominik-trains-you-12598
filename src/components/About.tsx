@@ -53,7 +53,7 @@ const About = () => {
               <img
                 src={images[current].src}
                 alt={images[current].alt}
-                className="w-full aspect-[4/5] object-cover transition-opacity duration-500"
+                className={`w-full aspect-[4/5] object-cover transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"}`}
               />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-2xl font-bold">{t("about.name")}</p>
