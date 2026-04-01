@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Award, Heart, Target, TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const images = [
   { src: "/A1_05712.webp", alt: "Dominik-trenér" },
@@ -13,9 +13,25 @@ const images = [
 const About = () => {
   const { t } = useLanguage();
   const [current, setCurrent] = useState(0);
+  const [fade, setFade] = useState(true);
 
-  const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
-  const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+  const goTo = useCallback((next: number) => {
+    setFade(false);
+    setTimeout(() => {
+      setCurrent(next);
+      setFade(true);
+    }, 200);
+  }, []);
+
+  const prev = () => goTo(current === 0 ? images.length - 1 : current - 1);
+  const next = () => goTo(current === images.length - 1 ? 0 : current + 1);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      goTo((current + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [current, goTo]);
 
   const features = [
     { icon: Award, title: t("about.certTitle"), description: t("about.certDesc") },
@@ -37,7 +53,7 @@ const About = () => {
               <img
                 src={images[current].src}
                 alt={images[current].alt}
-                className="w-full aspect-[4/5] object-cover transition-opacity duration-500"
+                className={`w-full aspect-[4/5] object-cover transition-opacity duration-300 ${fade ? "opacity-100" : "opacity-0"}`}
               />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-2xl font-bold">{t("about.name")}</p>
