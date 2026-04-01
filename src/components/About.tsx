@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Award, Heart, Target, TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const images = [
   { src: "/A1_05712.webp", alt: "Dominik-trenér" },
