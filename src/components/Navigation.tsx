@@ -128,9 +128,9 @@ const Navigation = () => {
           </div>
 
           {/* Row 2: Language switcher + EN badge */}
-          <div className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 pb-2 -mt-1">
+          <div className="relative flex items-center justify-end px-4 sm:px-6 lg:px-8 pb-2 -mt-1 gap-2">
             <span className="text-[10px] sm:text-[11px] text-muted-foreground/60">
-              {t("hero.enBadge")}
+              🇬🇧 {t("hero.enBadge")}
             </span>
             <LanguageSwitch />
           </div>
