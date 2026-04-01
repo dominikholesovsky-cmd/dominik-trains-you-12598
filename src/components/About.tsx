@@ -1,9 +1,21 @@
 import { Card } from "@/components/ui/card";
-import { Award, Heart, Target, TrendingUp } from "lucide-react";
+import { Award, Heart, Target, TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useState } from "react";
+
+const images = [
+  { src: "/A1_05712.webp", alt: "Dominik-trenér" },
+  { src: "/gallery-1.webp", alt: "Trénink klienta 1" },
+  { src: "/gallery-2.webp", alt: "Trénink klienta 2" },
+  { src: "/gallery-3.webp", alt: "Trénink klienta 3" },
+];
 
 const About = () => {
   const { t } = useLanguage();
+  const [current, setCurrent] = useState(0);
+
+  const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
 
   const features = [
     { icon: Award, title: t("about.certTitle"), description: t("about.certDesc") },
@@ -20,13 +32,43 @@ const About = () => {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t("about.subtitle")}</p>
         </div>
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          <div className="relative animate-fade-in-scale">
+          <div className="relative animate-fade-in-scale group">
             <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-card)]">
-              <img src="/A1_05712.webp" alt="Dominik-trenér" className="w-full aspect-[4/5] object-cover" />
+              <img
+                src={images[current].src}
+                alt={images[current].alt}
+                className="w-full aspect-[4/5] object-cover transition-opacity duration-500"
+              />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-2xl font-bold">{t("about.name")}</p>
                 <p className="text-muted-foreground">{t("about.role")}</p>
               </div>
+            </div>
+            {/* Minimal nav arrows */}
+            <button
+              onClick={prev}
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Previous"
+            >
+              <ChevronLeft className="w-4 h-4 text-foreground" />
+            </button>
+            <button
+              onClick={next}
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Next"
+            >
+              <ChevronRight className="w-4 h-4 text-foreground" />
+            </button>
+            {/* Dots */}
+            <div className="flex justify-center gap-1.5 mt-3">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`w-1.5 h-1.5 rounded-full transition-all ${i === current ? "bg-primary w-4" : "bg-muted-foreground/30"}`}
+                  aria-label={`Slide ${i + 1}`}
+                />
+              ))}
             </div>
           </div>
           <div className="space-y-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
