@@ -38,7 +38,7 @@ const Contact = () => {
       .min(1, t("contact.phoneRequired"))
       .max(20, t("contact.phoneTooLong"))
       .refine((val) => /^\+?[\d\s()-]{9,}$/.test(val) && val.replace(/\D/g, "").length >= 9, t("contact.phoneInvalid")),
-    goal: z.string(),
+    goal: z.string().min(1, t("contact.goalRequired")),
     message: z.string().trim().max(1000, t("contact.messageTooLong")),
     termsAccepted: z.boolean().refine((val) => val === true, { message: t("contact.mustAcceptTerms") }),
   });
@@ -64,7 +64,7 @@ const Contact = () => {
       return;
     }
     setIsSubmitting(true);
-    const goalLabel = goalOptions.find((option) => option.value === result.data.goal)?.cs ?? "neuvedeno";
+    const goalLabel = goalOptions.find((option) => option.value === result.data.goal)?.cs ?? result.data.goal;
     try {
       const response = await fetch(FORMSPREE_URL, {
         method: "POST",
@@ -180,13 +180,18 @@ const Contact = () => {
             <div className="relative">
               <select
                 id="goal"
+                required
                 value={formData.goal}
                 onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
-                className={`${fieldClass} border-[#3A4A41] min-h-[48px] cursor-pointer appearance-none pr-11 ${
+                aria-invalid={!!errors.goal}
+                aria-describedby={errors.goal ? "goal-error" : undefined}
+                className={`${fieldClass} ${border("goal")} min-h-[48px] cursor-pointer appearance-none pr-11 ${
                   formData.goal ? "" : "text-[#8A9A90]"
                 }`}
               >
-                <option value="">{t("contact.goalPlaceholder")}</option>
+                <option value="" disabled>
+                  {t("contact.goalPlaceholder")}
+                </option>
                 {goalOptions.map((option) => (
                   <option key={option.value} value={option.value} className="text-foreground">
                     {t(option.key)}
@@ -198,6 +203,7 @@ const Contact = () => {
                 aria-hidden="true"
               />
             </div>
+            {errors.goal && <p id="goal-error" className="text-sm text-[#FFB4A8]">{errors.goal}</p>}
           </div>
           <div className="flex flex-col gap-1.5">
             <label htmlFor="message" className="text-sm text-[#C9D3CC]">{t("contact.message")}</label>
