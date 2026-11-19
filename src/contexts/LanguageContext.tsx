@@ -107,7 +107,6 @@ const translations: Record<Language, Record<string, string>> = {
     "about.gallery1": "Trénink s klientem v MonsterGymu",
     "about.gallery2": "Trénink s klientkou, cviky nad hlavu",
     "about.gallery3": "Trénink s klientkou, přítahy s jednoručkou",
-    "about.instagram": "Sleduj mě na Instagramu",
 
     // Contact
     "contact.title": "Začni prvním tréninkem zdarma",
@@ -251,7 +250,6 @@ const translations: Record<Language, Record<string, string>> = {
     "about.gallery1": "Training session with a client at MonsterGym",
     "about.gallery2": "Training session with a client, overhead work",
     "about.gallery3": "Training session with a client, dumbbell rows",
-    "about.instagram": "Follow me on Instagram",
 
     // Contact
     "contact.title": "Start with a free first session",

@@ -11,16 +11,23 @@ const Testimonials = () => {
 
   return (
     <section id="reference" className="scroll-mt-20 border-y border-border bg-white">
-      <div className="mx-auto flex max-w-[1240px] flex-col gap-12 px-5 py-20 sm:px-6 lg:py-24">
-        <div className="flex flex-col gap-3">
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-10 px-6 sm:gap-12 py-16 sm:py-20 lg:py-24">
+        <div data-reveal className="flex flex-col gap-3">
           <h2 className="font-display text-[34px] font-bold leading-[1.05] tracking-[-0.03em] sm:text-[44px] lg:text-[52px]">
             {t("testimonials.title")}
           </h2>
           <p className="text-[17px] text-muted-foreground">{t("testimonials.subtitle")}</p>
         </div>
-        <div className="grid gap-6 lg:grid-cols-3">
-          {items.map((item) => (
-            <figure key={item.name} className="flex flex-col gap-4 rounded-[22px] bg-background p-8">
+        <div
+          data-reveal
+          className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-2 [scrollbar-width:none] lg:mx-0 lg:grid lg:snap-none lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden"
+        >
+          {items.map((item, i) => (
+            <figure
+              key={item.name}
+              style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
+              className="flex w-[84%] shrink-0 snap-start flex-col gap-4 rounded-[22px] bg-background p-6 sm:w-[60%] sm:p-8 lg:w-auto transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-24px_rgba(20,20,18,0.35)]"
+            >
               <p className="font-display text-[22px] font-bold leading-tight tracking-[-0.02em] text-primary">
                 {item.title}
               </p>

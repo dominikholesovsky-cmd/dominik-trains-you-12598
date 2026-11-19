@@ -77,8 +77,8 @@ const Contact = () => {
   ];
 
   return (
-    <section id="kontakt" className="scroll-mt-20 px-5 pb-20 sm:px-6 lg:pb-24">
-      <div className="mx-auto flex max-w-[1240px] flex-col gap-12 rounded-[32px] bg-forest px-6 py-10 text-[#F6F5F1] sm:p-12 lg:flex-row lg:gap-14 lg:p-[72px]">
+    <section id="kontakt" className="scroll-mt-20 px-4 pb-16 sm:px-6 sm:pb-20 lg:pb-24">
+      <div data-reveal className="mx-auto flex max-w-[1240px] flex-col gap-12 rounded-[28px] bg-forest px-6 py-10 text-[#F6F5F1] sm:rounded-[32px] sm:p-12 lg:flex-row lg:gap-14 lg:p-[72px]">
         <div className="flex min-w-0 flex-1 flex-col gap-5">
           <h2 className="font-display text-[36px] font-extrabold leading-none tracking-[-0.03em] sm:text-5xl lg:text-[60px]">
             {t("contact.title")}
@@ -90,9 +90,9 @@ const Contact = () => {
                 <a
                   href={item.href}
                   {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="inline-flex min-h-[44px] items-center gap-3 break-all text-[17px] font-semibold text-[#F6F5F1] transition-colors hover:text-lime"
+                  className="group inline-flex min-h-[44px] items-center gap-3 break-all text-[17px] font-semibold text-[#F6F5F1] transition-colors hover:text-lime"
                 >
-                  <item.icon className="h-5 w-5 shrink-0 text-lime" aria-hidden="true" />
+                  <item.icon className="h-5 w-5 shrink-0 text-lime transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:scale-110" aria-hidden="true" />
                   {item.label}
                 </a>
               </li>
@@ -174,7 +174,7 @@ const Contact = () => {
                 {t("contact.terms")}{" "}
                 <Dialog>
                   <DialogTrigger asChild>
-                    <button type="button" className="font-medium text-lime underline-offset-2 hover:underline">
+                    <button type="button" className="inline p-0 text-left font-medium text-lime underline underline-offset-2 hover:no-underline">
                       {t("contact.termsLink")}
                     </button>
                   </DialogTrigger>
@@ -195,7 +195,7 @@ const Contact = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="mt-1 min-h-[52px] rounded-full bg-lime px-6 text-[17px] font-bold text-forest transition-colors hover:bg-[hsl(80_80%_64%)] disabled:cursor-not-allowed disabled:opacity-60"
+            className="mt-1 min-h-[52px] rounded-full bg-lime px-6 text-[17px] font-bold text-forest transition-all duration-200 hover:-translate-y-0.5 hover:bg-[hsl(80_80%_64%)] hover:shadow-[0_10px_24px_-10px_rgba(201,240,122,0.6)] disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isSubmitting ? t("contact.submitting") : t("contact.submit")}
           </button>

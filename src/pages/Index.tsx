@@ -8,8 +8,13 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import CookieBanner from "@/components/CookieBanner";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useReveal } from "@/hooks/use-reveal";
 
 const Index = () => {
+  const { lang } = useLanguage();
+  useReveal(lang);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />

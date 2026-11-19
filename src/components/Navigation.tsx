@@ -40,7 +40,7 @@ const Navigation = () => {
           : "border-transparent bg-background"
       }`}
     >
-      <nav className="mx-auto flex max-w-[1240px] items-center justify-between gap-4 px-5 py-3 sm:px-6">
+      <nav className="mx-auto flex max-w-[1240px] items-center justify-between gap-4 px-6 py-3">
         <a
           href="#uvod"
           onClick={() => setIsOpen(false)}
@@ -54,7 +54,7 @@ const Navigation = () => {
             <a
               key={item.href}
               href={item.href}
-              className="text-[15px] text-foreground/75 transition-colors hover:text-foreground"
+              className="relative text-[15px] text-foreground/75 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 hover:text-foreground hover:after:scale-x-100"
             >
               {item.label}
             </a>
@@ -68,13 +68,13 @@ const Navigation = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="hidden h-11 w-11 items-center justify-center rounded-full text-foreground/70 transition-colors hover:bg-black/5 hover:text-foreground lg:inline-flex"
+            className="group hidden h-11 w-11 items-center justify-center rounded-full text-foreground/70 transition-colors hover:bg-black/5 hover:text-foreground lg:inline-flex"
           >
-            <Instagram className="h-5 w-5" />
+            <Instagram className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
           </a>
           <a
             href="#kontakt"
-            className="hidden min-h-[44px] items-center rounded-full bg-primary px-5 text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-[hsl(150_55%_21%)] md:inline-flex"
+            className="hidden min-h-[44px] items-center rounded-full bg-primary px-5 text-[15px] font-semibold text-primary-foreground hover:bg-[hsl(150_55%_21%)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-10px_rgba(31,107,69,0.7)] active:translate-y-0 md:inline-flex"
           >
             {t("nav.cta")}
           </a>
@@ -100,7 +100,7 @@ const Navigation = () => {
 
       {isOpen && (
         <div id="mobile-menu" className="border-t border-border bg-background lg:hidden">
-          <div className="mx-auto flex max-w-[1240px] flex-col gap-1 px-5 pb-6 pt-3 sm:px-6">
+          <div className="mx-auto flex max-w-[1240px] flex-col gap-1 px-6 pb-6 pt-3">
             {navItems.map((item) => (
               <a
                 key={item.href}
