@@ -4,9 +4,9 @@ const Testimonials = () => {
   const { t } = useLanguage();
 
   const items = [
-    { name: "Věra", title: t("testimonials.veraTitle"), story: t("testimonials.veraStory"), quote: t("testimonials.vera") },
-    { name: "Tomáš", title: t("testimonials.tomasTitle"), story: t("testimonials.tomasStory"), quote: t("testimonials.tomas") },
-    { name: "Hana", title: t("testimonials.hanaTitle"), story: t("testimonials.hanaStory"), quote: t("testimonials.hana") },
+    { name: "Veronika (54)", title: t("testimonials.veraTitle"), story: t("testimonials.veraStory"), quote: t("testimonials.vera") },
+    { name: "Michal (29)", title: t("testimonials.tomasTitle"), story: t("testimonials.tomasStory"), quote: t("testimonials.tomas") },
+    { name: "Iveta (36)", title: t("testimonials.hanaTitle"), story: t("testimonials.hanaStory"), quote: t("testimonials.hana") },
   ];
 
   return (
@@ -37,6 +37,7 @@ const Testimonials = () => {
             </figure>
           ))}
         </div>
+        <p className="-mt-4 text-sm text-muted-foreground sm:-mt-6">{t("testimonials.note")}</p>
       </div>
     </section>
   );

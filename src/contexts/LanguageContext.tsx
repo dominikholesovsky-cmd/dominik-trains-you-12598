@@ -81,8 +81,9 @@ const translations: Record<Language, Record<string, string>> = {
     // Testimonials
     "testimonials.title": "Co říkají klienti",
     "testimonials.subtitle": "Konkrétní lidé, konkrétní výsledky.",
+    "testimonials.note": "Jména klientů jsou kvůli soukromí změněná.",
     "testimonials.veraTitle": "Bez bolesti zad. Dnes běhá a vzpírá.",
-    "testimonials.veraStory": "Po letech bolestí zad se jich Věra zbavila. Dnes vesele běhá a dokonce vzpírá.",
+    "testimonials.veraStory": "Po letech bolestí zad se jich Veronika zbavila. Dnes vesele běhá a dokonce vzpírá.",
     "testimonials.vera":
       "S Dominikem jsem konečně pochopila správnou techniku a po letech bolestí zad se cítím skvěle. Jeho přístup je velmi profesionální a motivující.",
     "testimonials.tomasTitle": "Po operaci kolene zpátky ke sportu",
@@ -224,8 +225,9 @@ const translations: Record<Language, Record<string, string>> = {
     // Testimonials
     "testimonials.title": "What clients say",
     "testimonials.subtitle": "Real people, real results.",
+    "testimonials.note": "Client names have been changed for privacy.",
     "testimonials.veraTitle": "No more back pain. Now she runs and lifts.",
-    "testimonials.veraStory": "After years of back pain, Věra got rid of it. Today she happily runs and even lifts weights.",
+    "testimonials.veraStory": "After years of back pain, Veronika got rid of it. Today she happily runs and even lifts weights.",
     "testimonials.vera":
       "With Dominik, I finally understood proper technique and after years of back pain I feel great. His approach is very professional and motivating.",
     "testimonials.tomasTitle": "Back to sport after knee surgery",
