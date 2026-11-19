@@ -113,6 +113,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.subtitle": "Napiš mi, co tě trápí nebo kam se chceš dostat. Ozvu se obvykle do 24 hodin.",
     "contact.gym": "MonsterGym, Brno-Slatina",
     "contact.gymMap": "Zobrazit na mapě",
+    "contact.whatsapp": "Napiš mi na WhatsApp",
     "contact.name": "Jméno *",
     "contact.email": "E-mail *",
     "contact.phone": "Telefon *",
@@ -262,6 +263,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.subtitle": "Tell me what bothers you or where you want to get. I usually reply within 24 hours.",
     "contact.gym": "MonsterGym, Brno-Slatina",
     "contact.gymMap": "Show on map",
+    "contact.whatsapp": "Message me on WhatsApp",
     "contact.name": "Name *",
     "contact.email": "Email *",
     "contact.phone": "Phone *",
@@ -312,14 +314,16 @@ const translations: Record<Language, Record<string, string>> = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Language>(() => {
+  // Výchozí čeština (stejně jako předgenerované HTML), uložená volba se načte po startu.
+  const [lang, setLang] = useState<Language>("cs");
+
+  useEffect(() => {
     try {
-      const saved = localStorage.getItem("language");
-      return saved === "en" ? "en" : "cs";
+      if (localStorage.getItem("language") === "en") setLang("en");
     } catch {
-      return "cs";
+      // úložiště nedostupné – zůstává čeština
     }
-  });
+  }, []);
 
   const handleSetLang = (newLang: Language) => {
     setLang(newLang);

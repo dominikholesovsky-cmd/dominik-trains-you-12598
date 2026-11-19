@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <footer className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-4 px-6 pb-10 text-sm text-muted-foreground">
-      <p>
+      <p suppressHydrationWarning>
         © {currentYear} Dominik Holešovský · IČO 14147505 · {t("footer.rights")}
       </p>
       <div className="flex items-center gap-5">

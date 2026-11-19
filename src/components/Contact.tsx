@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ChevronDown, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { ChevronDown, Instagram, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { EMAIL, FORMSPREE_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, MAP_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/links";
+import { EMAIL, FORMSPREE_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, MAP_URL, PHONE_DISPLAY, PHONE_HREF, WHATSAPP_URL } from "@/lib/links";
 import TermsDialog from "./TermsDialog";
 
 const emptyForm = { name: "", email: "", phone: "", goal: "", message: "", termsAccepted: false };
@@ -95,6 +95,7 @@ const Contact = () => {
 
   const contacts = [
     { icon: Phone, label: PHONE_DISPLAY, href: PHONE_HREF, external: false },
+    { icon: MessageCircle, label: t("contact.whatsapp"), href: WHATSAPP_URL, external: true },
     { icon: Mail, label: EMAIL, href: `mailto:${EMAIL}`, external: false },
     { icon: MapPin, label: t("contact.gym"), href: MAP_URL, external: true },
     { icon: Instagram, label: INSTAGRAM_HANDLE, href: INSTAGRAM_URL, external: true },
