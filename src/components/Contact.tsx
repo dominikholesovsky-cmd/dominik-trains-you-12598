@@ -1,15 +1,23 @@
 import { useState } from "react";
-import { Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { ChevronDown, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { EMAIL, FORMSPREE_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, MAP_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/links";
-import Terms from "./Terms";
+import TermsDialog from "./TermsDialog";
 
-const emptyForm = { name: "", email: "", phone: "", message: "", termsAccepted: false };
+const emptyForm = { name: "", email: "", phone: "", goal: "", message: "", termsAccepted: false };
+
+// Popisky cílů posílám vždy česky, ať jsou zprávy v e-mailu jednotné.
+const goalOptions = [
+  { value: "strength", key: "contact.goalStrength", cs: "Nabrat sílu" },
+  { value: "weight", key: "contact.goalWeight", cs: "Zhubnout a shodit váhu" },
+  { value: "pain", key: "contact.goalPain", cs: "Hýbat se bez bolesti" },
+  { value: "injury", key: "contact.goalInjury", cs: "Návrat po zranění nebo operaci" },
+  { value: "fitness", key: "contact.goalFitness", cs: "Lepší kondice a postava" },
+  { value: "other", key: "contact.goalOther", cs: "Něco jiného" },
+];
 
 const fieldClass =
   "w-full rounded-xl border bg-[#1F2E26] px-3.5 text-base text-[#F6F5F1] placeholder:text-[#8A9A90] transition-colors focus:outline-none focus:ring-2 focus:ring-lime/70";
@@ -19,12 +27,19 @@ const Contact = () => {
   const [formData, setFormData] = useState(emptyForm);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
 
   const contactSchema = z.object({
     name: z.string().trim().min(2, t("contact.nameMin")).max(100, t("contact.nameTooLong")),
     email: z.string().trim().email(t("contact.invalidEmail")).max(255, t("contact.emailTooLong")),
-    phone: z.string().trim().max(20, t("contact.phoneTooLong")).optional(),
-    message: z.string().trim().min(10, t("contact.messageMin")).max(1000, t("contact.messageTooLong")),
+    phone: z
+      .string()
+      .trim()
+      .min(1, t("contact.phoneRequired"))
+      .max(20, t("contact.phoneTooLong"))
+      .refine((val) => /^\+?[\d\s()-]{9,}$/.test(val) && val.replace(/\D/g, "").length >= 9, t("contact.phoneInvalid")),
+    goal: z.string(),
+    message: z.string().trim().max(1000, t("contact.messageTooLong")),
     termsAccepted: z.boolean().refine((val) => val === true, { message: t("contact.mustAcceptTerms") }),
   });
 
@@ -42,7 +57,14 @@ const Contact = () => {
       toast.error(t("contact.formError"));
       return;
     }
+    // Skryté pole proti spamovým robotům: člověk ho nevidí ani nevyplní.
+    if (honeypot) {
+      toast.success(t("contact.successMsg"));
+      setFormData(emptyForm);
+      return;
+    }
     setIsSubmitting(true);
+    const goalLabel = goalOptions.find((option) => option.value === result.data.goal)?.cs ?? "neuvedeno";
     try {
       const response = await fetch(FORMSPREE_URL, {
         method: "POST",
@@ -51,7 +73,9 @@ const Contact = () => {
           name: result.data.name,
           email: result.data.email,
           phone: result.data.phone,
-          message: result.data.message,
+          cil: goalLabel,
+          message: result.data.message || "(bez zprávy)",
+          _subject: `Nová poptávka z webu: ${result.data.name}`,
         }),
       });
       if (response.ok) {
@@ -100,7 +124,7 @@ const Contact = () => {
           </ul>
         </div>
 
-        <form onSubmit={handleSubmit} noValidate className="flex min-w-0 flex-1 flex-col gap-4">
+        <form onSubmit={handleSubmit} noValidate className="relative flex min-w-0 flex-1 flex-col gap-4">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">
               <label htmlFor="name" className="text-sm text-[#C9D3CC]">{t("contact.name")}</label>
@@ -108,6 +132,7 @@ const Contact = () => {
                 id="name"
                 type="text"
                 autoComplete="name"
+                required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 aria-invalid={!!errors.name}
@@ -121,9 +146,12 @@ const Contact = () => {
               <input
                 id="phone"
                 type="tel"
+                inputMode="tel"
                 autoComplete="tel"
+                required
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                placeholder="+420 …"
                 aria-invalid={!!errors.phone}
                 aria-describedby={errors.phone ? "phone-error" : undefined}
                 className={`${fieldClass} ${border("phone")} min-h-[48px]`}
@@ -136,7 +164,9 @@ const Contact = () => {
             <input
               id="email"
               type="email"
+              inputMode="email"
               autoComplete="email"
+              required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               aria-invalid={!!errors.email}
@@ -146,10 +176,34 @@ const Contact = () => {
             {errors.email && <p id="email-error" className="text-sm text-[#FFB4A8]">{errors.email}</p>}
           </div>
           <div className="flex flex-col gap-1.5">
+            <label htmlFor="goal" className="text-sm text-[#C9D3CC]">{t("contact.goal")}</label>
+            <div className="relative">
+              <select
+                id="goal"
+                value={formData.goal}
+                onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
+                className={`${fieldClass} border-[#3A4A41] min-h-[48px] cursor-pointer appearance-none pr-11 ${
+                  formData.goal ? "" : "text-[#8A9A90]"
+                }`}
+              >
+                <option value="">{t("contact.goalPlaceholder")}</option>
+                {goalOptions.map((option) => (
+                  <option key={option.value} value={option.value} className="text-foreground">
+                    {t(option.key)}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                className="pointer-events-none absolute right-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-lime"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col gap-1.5">
             <label htmlFor="message" className="text-sm text-[#C9D3CC]">{t("contact.message")}</label>
             <textarea
               id="message"
-              rows={4}
+              rows={3}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               placeholder={t("contact.messagePlaceholder")}
@@ -158,6 +212,19 @@ const Contact = () => {
               className={`${fieldClass} ${border("message")} resize-y py-3`}
             />
             {errors.message && <p id="message-error" className="text-sm text-[#FFB4A8]">{errors.message}</p>}
+          </div>
+          {/* Past na roboty: skryté pole, které člověk nevyplní */}
+          <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+            <label htmlFor="company">Company</label>
+            <input
+              id="company"
+              name="company"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+            />
           </div>
           <div className="flex flex-col gap-1.5">
             <div className="flex items-start gap-3">
@@ -170,25 +237,24 @@ const Contact = () => {
                   errors.termsAccepted ? "border-[#FF9B8A]" : ""
                 }`}
               />
-              <label htmlFor="terms" className="cursor-pointer text-sm leading-relaxed text-[#C9D3CC]">
-                {t("contact.terms")}{" "}
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <button type="button" className="inline p-0 text-left font-medium text-lime underline underline-offset-2 hover:no-underline">
+              <p className="text-sm leading-relaxed text-[#C9D3CC]">
+                <label htmlFor="terms" className="cursor-pointer">
+                  {t("contact.terms")}
+                </label>{" "}
+                <TermsDialog
+                  trigger={
+                    <button
+                      type="button"
+                      className="inline p-0 text-left font-medium text-lime underline underline-offset-2 hover:no-underline"
+                    >
                       {t("contact.termsLink")}
                     </button>
-                  </DialogTrigger>
-                  <DialogContent className="max-h-[90vh] max-w-[95vw] sm:max-w-2xl lg:max-w-4xl">
-                    <DialogHeader>
-                      <DialogTitle>{t("contact.termsDialogTitle")}</DialogTitle>
-                    </DialogHeader>
-                    <ScrollArea className="h-[70vh] pr-4">
-                      <Terms />
-                    </ScrollArea>
-                  </DialogContent>
-                </Dialog>{" "}
-                {t("contact.termsGdpr")}
-              </label>
+                  }
+                />{" "}
+                <label htmlFor="terms" className="cursor-pointer">
+                  {t("contact.termsGdpr")}
+                </label>
+              </p>
             </div>
             {errors.termsAccepted && <p className="text-sm text-[#FFB4A8]">{errors.termsAccepted}</p>}
           </div>

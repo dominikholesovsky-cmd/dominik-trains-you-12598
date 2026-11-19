@@ -15,8 +15,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['"Inter Tight"', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Inter Variable"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Inter Tight Variable"', '"Inter Variable"', 'system-ui', 'sans-serif'],
       },
       colors: {
         forest: "hsl(var(--forest))",

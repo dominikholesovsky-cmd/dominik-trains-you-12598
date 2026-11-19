@@ -52,7 +52,7 @@
 
   body {
     @apply bg-background text-foreground overflow-x-hidden antialiased;
-    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-family: "Inter Variable", "Inter", system-ui, -apple-system, sans-serif;
     font-weight: 400;
   }
 
@@ -60,7 +60,7 @@
   h2,
   h3,
   h4 {
-    font-family: "Inter Tight", "Inter", system-ui, sans-serif;
+    font-family: "Inter Tight Variable", "Inter Variable", system-ui, sans-serif;
     letter-spacing: -0.02em;
   }
 

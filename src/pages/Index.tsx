@@ -7,7 +7,6 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import CookieBanner from "@/components/CookieBanner";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -28,7 +27,6 @@ const Index = () => {
       </main>
       <Footer />
       <BackToTop />
-      <CookieBanner />
     </div>
   );
 };
