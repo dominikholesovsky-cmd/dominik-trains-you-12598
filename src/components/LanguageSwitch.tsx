@@ -1,32 +1,43 @@
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage, type Language } from "@/contexts/LanguageContext";
 
-const LanguageSwitch = () => {
-  const { lang, setLang } = useLanguage();
+const options: { value: Language; label: string }[] = [
+  { value: "cs", label: "CZ" },
+  { value: "en", label: "EN" },
+];
+
+/** Decentní posuvný přepínač jazyka. */
+const LanguageSwitch = ({ className = "" }: { className?: string }) => {
+  const { lang, setLang, t } = useLanguage();
 
   return (
-    <div className="relative inline-flex items-center bg-muted/60 rounded-full p-0.5 border border-border/40">
-      {/* Sliding indicator */}
-      <div
-        className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-primary shadow-sm transition-all duration-300 ease-out ${
-          lang === "cs" ? "left-0.5" : "left-[calc(50%+2px)]"
+    <div
+      role="radiogroup"
+      aria-label={t("nav.language")}
+      className={`relative inline-grid grid-cols-2 items-center rounded-full bg-black/[0.06] p-[3px] ${className}`}
+    >
+      <span
+        aria-hidden="true"
+        className={`absolute top-[3px] bottom-[3px] left-[3px] w-[calc(50%-3px)] rounded-full bg-white shadow-[0_1px_3px_rgba(20,20,18,0.18)] transition-transform duration-300 ease-out ${
+          lang === "en" ? "translate-x-full" : "translate-x-0"
         }`}
       />
-      <button
-        onClick={() => setLang("cs")}
-        className={`relative z-10 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full transition-colors duration-300 ${
-          lang === "cs" ? "text-primary-foreground" : "text-muted-foreground/60 hover:text-foreground/80"
-        }`}
-      >
-        CZ
-      </button>
-      <button
-        onClick={() => setLang("en")}
-        className={`relative z-10 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-full transition-colors duration-300 ${
-          lang === "en" ? "text-primary-foreground" : "text-muted-foreground/60 hover:text-foreground/80"
-        }`}
-      >
-        EN
-      </button>
+      {options.map((option) => {
+        const active = lang === option.value;
+        return (
+          <button
+            key={option.value}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            onClick={() => setLang(option.value)}
+            className={`relative z-10 min-w-[40px] rounded-full px-2.5 py-1.5 text-xs font-semibold tracking-wide transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+              active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {option.label}
+          </button>
+        );
+      })}
     </div>
   );
 };

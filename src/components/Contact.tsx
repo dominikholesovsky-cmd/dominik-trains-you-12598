@@ -1,20 +1,22 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import { Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { toast } from "sonner";
+import { z } from "zod";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Mail, MapPin, Phone } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
-import { z } from "zod";
-import Terms from "./Terms";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { EMAIL, FORMSPREE_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, MAP_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/links";
+import Terms from "./Terms";
+
+const emptyForm = { name: "", email: "", phone: "", message: "", termsAccepted: false };
+
+const fieldClass =
+  "w-full rounded-xl border bg-[#1F2E26] px-3.5 text-base text-[#F6F5F1] placeholder:text-[#8A9A90] transition-colors focus:outline-none focus:ring-2 focus:ring-lime/70";
 
 const Contact = () => {
   const { t } = useLanguage();
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "", termsAccepted: false });
+  const [formData, setFormData] = useState(emptyForm);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -32,20 +34,29 @@ const Contact = () => {
     const result = contactSchema.safeParse(formData);
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
-      result.error.errors.forEach((error) => { if (error.path[0]) fieldErrors[error.path[0].toString()] = error.message; });
+      result.error.errors.forEach((error) => {
+        const key = error.path[0]?.toString();
+        if (key && !fieldErrors[key]) fieldErrors[key] = error.message;
+      });
       setErrors(fieldErrors);
       toast.error(t("contact.formError"));
       return;
     }
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://formspree.io/f/xpwojlgy", {
-        method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ name: formData.name, email: formData.email, phone: formData.phone, message: formData.message }),
+      const response = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: result.data.name,
+          email: result.data.email,
+          phone: result.data.phone,
+          message: result.data.message,
+        }),
       });
       if (response.ok) {
         toast.success(t("contact.successMsg"));
-        setFormData({ name: "", email: "", phone: "", message: "", termsAccepted: false });
+        setFormData(emptyForm);
       } else {
         toast.error(t("contact.errorMsg"));
       }
@@ -56,99 +67,139 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    { icon: MapPin, title: t("contact.gymLabel"), value: t("contact.gymValue"), link: "https://www.google.com/maps/place/MONSTER+Gym/@49.1764238,16.6829687,17z/data=!4m12!1m5!3m4!2zNDnCsDEwJzM1LjEiTiAxNsKwNDEnMDguMCJF!8m2!3d49.1764238!4d16.6855436!3m5!1s0x4712eb20d82b1b19:0xa108cd5891f7fd3e!8m2!3d49.1764238!4d16.6881185!16s%2Fg%2F11g6nr25xm?entry=ttu&g_ep=EgoyMDI1MTEwNC4xIKXMDSoASAFQAw%3D%3D" },
-    { icon: Phone, title: t("contact.phoneLabel"), value: "+420 725 961 371", link: "tel:+420725961371" },
-    { icon: Mail, title: t("contact.emailLabel"), value: "dominik.holesovsky@gmail.com", link: "mailto:dominik.holesovsky@gmail.com" },
+  const border = (field: string) => (errors[field] ? "border-[#FF9B8A]" : "border-[#3A4A41]");
+
+  const contacts = [
+    { icon: Phone, label: PHONE_DISPLAY, href: PHONE_HREF, external: false },
+    { icon: Mail, label: EMAIL, href: `mailto:${EMAIL}`, external: false },
+    { icon: MapPin, label: t("contact.gym"), href: MAP_URL, external: true },
+    { icon: Instagram, label: INSTAGRAM_HANDLE, href: INSTAGRAM_URL, external: true },
   ];
 
   return (
-    <section id="kontakt" className="scroll-mt-20 py-12 sm:py-16 md:py-16 px-4 bg-background">
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="text-center mb-8 sm:mb-10 md:mb-12 space-y-3 sm:space-y-4 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">{t("contact.title")}</h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">{t("contact.subtitle")}</p>
+    <section id="kontakt" className="scroll-mt-20 px-5 pb-20 sm:px-6 lg:pb-24">
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-12 rounded-[32px] bg-forest px-6 py-10 text-[#F6F5F1] sm:p-12 lg:flex-row lg:gap-14 lg:p-[72px]">
+        <div className="flex min-w-0 flex-1 flex-col gap-5">
+          <h2 className="font-display text-[36px] font-extrabold leading-none tracking-[-0.03em] sm:text-5xl lg:text-[60px]">
+            {t("contact.title")}
+          </h2>
+          <p className="text-lg text-[#C9D3CC]">{t("contact.subtitle")}</p>
+          <ul className="flex flex-col gap-1 pt-2">
+            {contacts.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="inline-flex min-h-[44px] items-center gap-3 break-all text-[17px] font-semibold text-[#F6F5F1] transition-colors hover:text-lime"
+                >
+                  <item.icon className="h-5 w-5 shrink-0 text-lime" aria-hidden="true" />
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 max-w-full">
-          <Card className="p-4 sm:p-6 md:p-8 bg-card border-border animate-fade-in-scale w-full max-w-full">
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6 w-full">
-              <div className="w-full">
-                <label htmlFor="name" className="block text-sm font-medium mb-2">{t("contact.name")}</label>
-                <Input id="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder={t("contact.namePlaceholder")} className={`w-full ${errors.name ? "border-destructive" : ""}`} />
-                {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
-              </div>
-              <div className="w-full">
-                <label htmlFor="email" className="block text-sm font-medium mb-2">{t("contact.email")}</label>
-                <Input id="email" type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder={t("contact.emailPlaceholder")} className={`w-full ${errors.email ? "border-destructive" : ""}`} />
-                {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
-              </div>
-              <div className="w-full">
-                <label htmlFor="phone" className="block text-sm font-medium mb-2">{t("contact.phone")}</label>
-                <Input id="phone" type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} placeholder={t("contact.phonePlaceholder")} className={`w-full ${errors.phone ? "border-destructive" : ""}`} />
-              </div>
-              <div className="w-full">
-                <label htmlFor="message" className="block text-sm font-medium mb-2">{t("contact.message")}</label>
-                <Textarea id="message" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} placeholder={t("contact.messagePlaceholder")} rows={5} className={`w-full ${errors.message ? "border-destructive" : ""}`} />
-                {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
-              </div>
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <Checkbox id="terms" checked={formData.termsAccepted} onCheckedChange={(checked) => setFormData({ ...formData, termsAccepted: checked as boolean })} className={errors.termsAccepted ? "border-destructive" : ""} />
-                  <label htmlFor="terms" className="text-xs sm:text-sm leading-relaxed cursor-pointer">
-                    {t("contact.terms")}{" "}
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <button type="button" className="text-primary hover:underline font-medium">{t("contact.termsLink")}</button>
-                      </DialogTrigger>
-                      <DialogContent className="max-w-4xl max-h-[90vh]">
-                        <DialogHeader><DialogTitle>{t("contact.termsDialogTitle")}</DialogTitle></DialogHeader>
-                        <ScrollArea className="h-[70vh] pr-4"><Terms /></ScrollArea>
-                      </DialogContent>
-                    </Dialog>
-                    {" "}{t("contact.termsGdpr")}
-                  </label>
-                </div>
-                {errors.termsAccepted && <p className="text-xs text-destructive">{errors.termsAccepted}</p>}
-              </div>
-              <Button type="submit" size="lg" variant="hero" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? t("contact.submitting") : t("contact.submit")}
-              </Button>
-            </form>
-          </Card>
-
-          <div className="space-y-6 sm:space-y-8 animate-fade-in w-full max-w-full">
-            <div className="space-y-3 sm:space-y-4">
-              <h3 className="text-xl sm:text-2xl font-bold">{t("contact.contactInfo")}</h3>
-              <p className="text-muted-foreground">{t("contact.contactDesc")}</p>
+        <form onSubmit={handleSubmit} noValidate className="flex min-w-0 flex-1 flex-col gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="name" className="text-sm text-[#C9D3CC]">{t("contact.name")}</label>
+              <input
+                id="name"
+                type="text"
+                autoComplete="name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? "name-error" : undefined}
+                className={`${fieldClass} ${border("name")} min-h-[48px]`}
+              />
+              {errors.name && <p id="name-error" className="text-sm text-[#FFB4A8]">{errors.name}</p>}
             </div>
-            <div className="space-y-3 sm:space-y-4">
-              {contactInfo.map((info, index) => (
-                <Card key={index} className="p-4 sm:p-6 bg-card border-border hover:border-primary/50 transition-all duration-300 w-full overflow-hidden">
-                  <div className="flex items-start gap-3 sm:gap-4 w-full">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-xs sm:text-sm text-muted-foreground mb-1">{info.title}</p>
-                      {info.link ? (
-                        <a href={info.link} target="_blank" rel="noopener noreferrer" className={`text-sm sm:text-base md:text-lg font-semibold hover:text-primary transition-colors break-words ${info.title === t("contact.gymLabel") ? "underline" : ""}`}>{info.value}</a>
-                      ) : (
-                        <p className="text-sm sm:text-base md:text-lg font-semibold break-words">{info.value}</p>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              ))}
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="phone" className="text-sm text-[#C9D3CC]">{t("contact.phone")}</label>
+              <input
+                id="phone"
+                type="tel"
+                autoComplete="tel"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                aria-invalid={!!errors.phone}
+                aria-describedby={errors.phone ? "phone-error" : undefined}
+                className={`${fieldClass} ${border("phone")} min-h-[48px]`}
+              />
+              {errors.phone && <p id="phone-error" className="text-sm text-[#FFB4A8]">{errors.phone}</p>}
             </div>
-            <Card className="p-5 sm:p-6 md:p-8 bg-primary/10 border-primary/30 w-full">
-              <div className="space-y-3 sm:space-y-4">
-                <h4 className="text-base sm:text-lg md:text-xl font-bold">{t("contact.freeTraining")}</h4>
-                <p className="text-sm sm:text-base text-foreground/80">{t("contact.freeTrainingDesc")}</p>
-              </div>
-            </Card>
           </div>
-        </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="email" className="text-sm text-[#C9D3CC]">{t("contact.email")}</label>
+            <input
+              id="email"
+              type="email"
+              autoComplete="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? "email-error" : undefined}
+              className={`${fieldClass} ${border("email")} min-h-[48px]`}
+            />
+            {errors.email && <p id="email-error" className="text-sm text-[#FFB4A8]">{errors.email}</p>}
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="message" className="text-sm text-[#C9D3CC]">{t("contact.message")}</label>
+            <textarea
+              id="message"
+              rows={4}
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              placeholder={t("contact.messagePlaceholder")}
+              aria-invalid={!!errors.message}
+              aria-describedby={errors.message ? "message-error" : undefined}
+              className={`${fieldClass} ${border("message")} resize-y py-3`}
+            />
+            {errors.message && <p id="message-error" className="text-sm text-[#FFB4A8]">{errors.message}</p>}
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <div className="flex items-start gap-3">
+              <Checkbox
+                id="terms"
+                checked={formData.termsAccepted}
+                onCheckedChange={(checked) => setFormData({ ...formData, termsAccepted: checked === true })}
+                aria-invalid={!!errors.termsAccepted}
+                className={`mt-0.5 h-5 w-5 border-[#7D8E84] data-[state=checked]:border-lime data-[state=checked]:bg-lime data-[state=checked]:text-forest ${
+                  errors.termsAccepted ? "border-[#FF9B8A]" : ""
+                }`}
+              />
+              <label htmlFor="terms" className="cursor-pointer text-sm leading-relaxed text-[#C9D3CC]">
+                {t("contact.terms")}{" "}
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button type="button" className="font-medium text-lime underline-offset-2 hover:underline">
+                      {t("contact.termsLink")}
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="max-h-[90vh] max-w-[95vw] sm:max-w-2xl lg:max-w-4xl">
+                    <DialogHeader>
+                      <DialogTitle>{t("contact.termsDialogTitle")}</DialogTitle>
+                    </DialogHeader>
+                    <ScrollArea className="h-[70vh] pr-4">
+                      <Terms />
+                    </ScrollArea>
+                  </DialogContent>
+                </Dialog>{" "}
+                {t("contact.termsGdpr")}
+              </label>
+            </div>
+            {errors.termsAccepted && <p className="text-sm text-[#FFB4A8]">{errors.termsAccepted}</p>}
+          </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="mt-1 min-h-[52px] rounded-full bg-lime px-6 text-[17px] font-bold text-forest transition-colors hover:bg-[hsl(80_80%_64%)] disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {isSubmitting ? t("contact.submitting") : t("contact.submit")}
+          </button>
+        </form>
       </div>
     </section>
   );

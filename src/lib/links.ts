@@ -1,0 +1,8 @@
+export const INSTAGRAM_URL = "https://www.instagram.com/dominik.holesovsky/";
+export const INSTAGRAM_HANDLE = "@dominik.holesovsky";
+export const PHONE_DISPLAY = "+420 725 961 371";
+export const PHONE_HREF = "tel:+420725961371";
+export const EMAIL = "dominik.holesovsky@gmail.com";
+export const MAP_URL =
+  "https://www.google.com/maps/place/MONSTER+Gym/@49.1764238,16.6829687,17z/data=!4m12!1m5!3m4!2zNDnCsDEwJzM1LjEiTiAxNsKwNDEnMDguMCJF!8m2!3d49.1764238!4d16.6855436!3m5!1s0x4712eb20d82b1b19:0xa108cd5891f7fd3e!8m2!3d49.1764238!4d16.6881185!16s%2Fg%2F11g6nr25xm";
+export const FORMSPREE_URL = "https://formspree.io/f/xpwojlgy";

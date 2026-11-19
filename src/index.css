@@ -2,58 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Design system – světlý vzhled. Všechny barvy v HSL. */
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 48 22% 95%; /* #F6F5F1 */
+    --foreground: 60 4% 10%; /* #1A1A18 */
 
-    --card: 240 10% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 60 4% 10%;
 
-    --popover: 240 10% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 60 4% 10%;
 
-    --primary: 152 69% 31%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 150 55% 27%; /* #1F6B45 */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 6% 10%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 45 17% 91%;
+    --secondary-foreground: 60 4% 10%;
 
-    --muted: 240 6% 10%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 45 17% 91%;
+    --muted-foreground: 60 3% 36%; /* #5F5F59 */
 
-    --accent: 160 84% 39%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 141 30% 92%; /* #E4F0E8 */
+    --accent-foreground: 150 55% 20%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 15%;
-    --input: 240 6% 15%;
-    --ring: 152 69% 31%;
+    --border: 46 13% 87%; /* #E3E1DA */
+    --input: 46 10% 80%;
+    --ring: 150 55% 27%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
-    /* Fitness brand colors - Monstergym dark green */
-    --energy: 152 69% 31%;
-    --energy-glow: 160 84% 39%;
-    --dark-surface: 240 10% 6%;
-    --darker-surface: 240 10% 3.9%;
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(152 69% 31%), hsl(160 84% 39%));
-    --gradient-dark: linear-gradient(180deg, hsl(240 10% 3.9%), hsl(240 10% 6%));
-    
-    /* Shadows */
-    --shadow-glow: 0 0 40px hsl(152 69% 31% / 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
-    
-    /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --forest: 148 22% 12%; /* #17241D */
+    --lime: 80 80% 71%; /* #C9F07A */
   }
 }
 
@@ -62,19 +46,38 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground overflow-x-hidden;
-    font-weight: 300;
-    font-family: 'Figtree', sans-serif; /* přidáno */
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
+    @apply bg-background text-foreground overflow-x-hidden antialiased;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
     font-weight: 400;
-    font-family: 'Figtree', sans-serif; /* přidáno */
   }
-  
-  strong, b {
-    font-weight: 500;
-    font-family: 'Figtree', sans-serif; /* nepovinné */
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Inter Tight", "Inter", system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: hsl(var(--lime));
+    color: hsl(var(--forest));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

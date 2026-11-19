@@ -1,185 +1,139 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Dumbbell, Instagram, Phone, ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Instagram, Menu, Phone, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { INSTAGRAM_URL, PHONE_HREF } from "@/lib/links";
 import LanguageSwitch from "./LanguageSwitch";
 
 const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
   const navItems = [
-    { label: t("nav.intro"), href: "#uvod" },
-    { label: t("nav.services"), href: "#sluzby" },
+    { label: t("nav.process"), href: "#jak" },
+    { label: t("nav.pricing"), href: "#cenik" },
     { label: t("nav.references"), href: "#reference" },
     { label: t("nav.about"), href: "#o-mne" },
-    { label: t("nav.gym"), href: "http://www.monstergym.cz/", external: true },
   ];
 
-  const scrollToSection = (href: string, external?: boolean) => {
-    if (external) {
-      window.open(href, "_blank");
-      return;
-    }
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
-    setIsMobileMenuOpen(false);
-  };
-
   return (
-    <>
-      <nav
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 px-2 ${
-          isScrolled ? "w-full max-w-7xl" : "w-full max-w-6xl"
-        }`}
-      >
-        <div
-          className={`relative overflow-hidden rounded-2xl border transition-all duration-300 ${
-            isScrolled
-              ? "bg-background/80 backdrop-blur-xl border-primary/30 shadow-lg shadow-primary/20"
-              : "bg-background/60 backdrop-blur-md border-border/50"
-          }`}
+    <header
+      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
+        isScrolled || isOpen
+          ? "border-border bg-background/90 backdrop-blur-md"
+          : "border-transparent bg-background"
+      }`}
+    >
+      <nav className="mx-auto flex max-w-[1240px] items-center justify-between gap-4 px-5 py-3 sm:px-6">
+        <a
+          href="#uvod"
+          onClick={() => setIsOpen(false)}
+          className="font-display text-[17px] font-bold tracking-tight text-foreground sm:text-lg"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-0 hover:opacity-10 transition-opacity duration-500 bg-[length:200%_auto] animate-[gradient_3s_linear_infinite]" />
+          Dominik Holešovský
+        </a>
 
-          {/* Row 1: Logo + Nav + Actions */}
-          <div className="relative flex items-center justify-between px-4 sm:px-6 lg:px-8 h-14 sm:h-16">
-            <button
-              onClick={() => scrollToSection("#uvod")}
-              className="flex items-center gap-2 font-bold text-sm sm:text-base lg:text-lg hover:text-primary transition-all group"
+        <div className="hidden items-center gap-7 lg:flex">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-[15px] text-foreground/75 transition-colors hover:text-foreground"
             >
-              <div className="p-1.5 sm:p-2 rounded-lg bg-primary/20 border border-primary/30 group-hover:bg-primary/30 transition-colors">
-                <Dumbbell className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-              </div>
-              <span>Dominik Holešovský</span>
-            </button>
+              {item.label}
+            </a>
+          ))}
+        </div>
 
-            <div className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
-              {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href, item.external)}
-                  className="relative px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors group"
-                >
-                  {item.label} {item.external && (<ExternalLink className="inline-block w-4 h-4 ml-1 opacity-70 group-hover:opacity-100" />)}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-3/4" />
-                </button>
-              ))}
-            </div>
-
-            <div className="hidden lg:flex items-center gap-3">
-              <a
-                href="https://www.instagram.com/dominik.holesovsky/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg hover:bg-primary/10 transition-colors group"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5 text-foreground/60 group-hover:text-primary transition-colors" />
-              </a>
-              <a
-                href="tel:+420725961371"
-                className="p-2 rounded-lg hover:bg-primary/10 transition-colors group"
-                aria-label={t("nav.phone")}
-              >
-                <Phone className="w-5 h-5 text-foreground/60 group-hover:text-primary transition-colors" />
-              </a>
-              <div className="w-px h-6 bg-border/50" />
-              <Button
-                variant="hero"
-                size="sm"
-                onClick={() => scrollToSection("#kontakt")}
-                className="relative overflow-hidden group"
-              >
-                <span className="relative z-10">{t("nav.bookTraining")}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </Button>
-            </div>
-
-            <div className="flex lg:hidden items-center gap-2 sm:gap-3">
-              <a
-                href="tel:+420725961371"
-                className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
-                aria-label={t("nav.phone")}
-              >
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-foreground/60" />
-              </a>
-              <button
-                className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="Menu"
-              >
-                {isMobileMenuOpen ? (
-                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
-                ) : (
-                  <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Row 2: Language switcher + EN badge */}
-          <div className="relative flex items-center justify-end px-4 sm:px-6 lg:px-8 pb-2 -mt-1 gap-2">
-            <span className="text-[10px] sm:text-[11px] text-muted-foreground/60">
-              🇬🇧 {t("hero.enBadge")}
-            </span>
-            <LanguageSwitch />
-          </div>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <LanguageSwitch className="hidden sm:inline-grid" />
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="hidden h-11 w-11 items-center justify-center rounded-full text-foreground/70 transition-colors hover:bg-black/5 hover:text-foreground lg:inline-flex"
+          >
+            <Instagram className="h-5 w-5" />
+          </a>
+          <a
+            href="#kontakt"
+            className="hidden min-h-[44px] items-center rounded-full bg-primary px-5 text-[15px] font-semibold text-primary-foreground transition-colors hover:bg-[hsl(150_55%_21%)] md:inline-flex"
+          >
+            {t("nav.cta")}
+          </a>
+          <a
+            href={PHONE_HREF}
+            aria-label={t("nav.phone")}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground/80 hover:bg-black/5 lg:hidden"
+          >
+            <Phone className="h-5 w-5" />
+          </a>
+          <button
+            type="button"
+            onClick={() => setIsOpen((open) => !open)}
+            aria-label={isOpen ? t("nav.closeMenu") : t("nav.menu")}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground hover:bg-black/5 lg:hidden"
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
       </nav>
 
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          <div
-            className="absolute inset-0 bg-background/95 backdrop-blur-xl"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-          <div className="relative h-full flex flex-col items-center justify-center p-8 animate-fade-in">
-            <div className="w-full max-w-sm space-y-2">
-              {navItems.map((item, index) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href, item.external)}
-                  className="w-full text-left px-6 py-4 rounded-xl hover:bg-primary/10 transition-all duration-300 group border border-transparent hover:border-primary/20"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <span className="text-xl font-semibold text-foreground/80 group-hover:text-primary transition-colors">
-                    {item.label} {item.external && (<ExternalLink className="inline-block w-4 h-4 ml-1 opacity-70 group-hover:opacity-100" />)}
-                  </span>
-                </button>
-              ))}
-              <div className="pt-4 space-y-3">
-                <Button
-                  variant="hero"
-                  className="w-full text-lg py-6"
-                  onClick={() => scrollToSection("#kontakt")}
-                >
-                  {t("nav.bookTraining")}
-                </Button>
-                <a
-                  href="https://www.instagram.com/dominik.holesovsky/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full px-6 py-4 rounded-xl border border-border hover:border-primary/50 transition-all group"
-                >
-                  <Instagram className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">@dominik.holesovsky</span>
-                </a>
-              </div>
+      {isOpen && (
+        <div id="mobile-menu" className="border-t border-border bg-background lg:hidden">
+          <div className="mx-auto flex max-w-[1240px] flex-col gap-1 px-5 pb-6 pt-3 sm:px-6">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="rounded-xl px-3 py-3 font-display text-xl font-semibold text-foreground hover:bg-black/5"
+              >
+                {item.label}
+              </a>
+            ))}
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-4 px-3">
+              <LanguageSwitch />
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] items-center gap-2 text-[15px] font-medium text-foreground/80"
+              >
+                <Instagram className="h-5 w-5" />
+                Instagram
+              </a>
             </div>
+            <a
+              href="#kontakt"
+              onClick={() => setIsOpen(false)}
+              className="mt-4 inline-flex min-h-[52px] items-center justify-center rounded-full bg-primary px-6 text-base font-semibold text-primary-foreground"
+            >
+              {t("hero.cta")}
+            </a>
           </div>
         </div>
       )}
-    </>
+    </header>
   );
 };
 
