@@ -14,17 +14,23 @@ const Hero = () => {
     <section id="uvod" className="scroll-mt-20">
       <div className="mx-auto grid max-w-[1240px] gap-y-7 px-3 pb-16 pt-2 sm:px-6 sm:pt-12 lg:grid-cols-2 lg:gap-x-14 lg:pb-24 lg:pt-16">
         <div className="pointer-events-none relative z-10 col-start-1 row-start-1 flex min-w-0 flex-col gap-3 self-end p-5 pb-6 text-white sm:gap-7 sm:p-8 lg:pointer-events-auto lg:col-start-1 lg:row-start-1 lg:p-0 lg:text-foreground">
-          <p data-reveal className="text-[11px] font-semibold uppercase tracking-[0.06em] text-lime min-[380px]:text-xs sm:text-sm sm:tracking-[0.08em] lg:text-primary">
-            {t("hero.eyebrow")}
-          </p>
-          <h1
-            data-reveal
-            style={{ "--reveal-delay": "80ms" } as React.CSSProperties}
-            className="font-display text-[40px] font-extrabold leading-[0.98] tracking-[-0.035em] [text-wrap:balance] sm:text-[56px] lg:text-[76px] xl:text-[84px]"
-          >
-            {t("hero.title1")}
-            <br />
-            {t("hero.title2")}
+          {/* Celý blok je jeden nadpis, aby Google četl „Osobní trenér Brno-Slatina“ jako hlavní téma stránky. */}
+          <h1 className="flex flex-col gap-3 sm:gap-7">
+            <span
+              data-reveal
+              className="block font-sans text-[11px] font-semibold uppercase tracking-[0.06em] text-lime min-[380px]:text-xs sm:text-sm sm:tracking-[0.08em] lg:text-primary"
+            >
+              {t("hero.eyebrow")}
+            </span>
+            <span
+              data-reveal
+              style={{ "--reveal-delay": "80ms" } as React.CSSProperties}
+              className="block font-display text-[40px] font-extrabold leading-[0.98] tracking-[-0.035em] [text-wrap:balance] sm:text-[56px] lg:text-[76px] xl:text-[84px]"
+            >
+              {t("hero.title1")}
+              <br />
+              {t("hero.title2")}
+            </span>
           </h1>
         </div>
 

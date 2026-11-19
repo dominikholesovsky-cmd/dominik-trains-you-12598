@@ -22,7 +22,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.language": "Jazyk",
 
     // Hero
-    "hero.eyebrow": "Osobní trenér · MonsterGym Brno-Slatina",
+    "hero.eyebrow": "Osobní trenér Brno-Slatina · MonsterGym",
     "hero.title1": "Silnější tělo.",
     "hero.title2": "Bez bolesti a zranění.",
     "hero.description":
@@ -32,10 +32,10 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.clients": "klientů",
     "hero.priceValue": "600 Kč",
     "hero.price": "za hodinový trénink",
-    "hero.languages": "trénuji i v angličtině",
+    "hero.languages": "trénuji i v angličtině",
     "hero.badgeTitle": "První trénink zdarma",
     "hero.badgeDesc": "konzultace + seznamovací trénink",
-    "hero.imageAlt": "Dominik Holešovský, osobní trenér, v posilovně MonsterGym",
+    "hero.imageAlt": "Dominik Holešovský, osobní trenér v Brně, v posilovně MonsterGym ve Slatině",
 
     // Process
     "process.title": "Jak spolupráce probíhá",
@@ -51,14 +51,14 @@ const translations: Record<Language, Record<string, string>> = {
     "pricing.title": "Ceník",
     "pricing.subtitle": "První konzultace a seznamovací trénink jsou zdarma.",
     "pricing.personalTitle": "Osobní trénink",
-    "pricing.personalUnit": "60 minut",
+    "pricing.personalUnit": "60 minut",
     "pricing.personalPrice": "600 Kč",
     "pricing.personalB1": "Analýza pohybových vzorců",
     "pricing.personalB2": "Individuální tréninkový plán",
     "pricing.personalB3": "Důraz na prevenci zranění",
     "pricing.personalCta": "Objednat trénink",
-    "pricing.packTitle": "Balíček 10 tréninků",
-    "pricing.packUnit": "platnost 4 měsíce",
+    "pricing.packTitle": "Balíček 10 tréninků",
+    "pricing.packUnit": "platnost 4 měsíce",
     "pricing.packPrice": "5 400 Kč",
     "pricing.packOriginal": "6 000 Kč",
     "pricing.packB1": "540 Kč za trénink",
@@ -67,15 +67,15 @@ const translations: Record<Language, Record<string, string>> = {
     "pricing.packCta": "Objednat balíček",
     "pricing.best": "Nejvýhodnější",
     "pricing.planTitle": "Tréninkový plán",
-    "pricing.planUnit": "na 3 měsíce",
+    "pricing.planUnit": "na 3 měsíce",
     "pricing.planPrice": "1 000 Kč",
     "pricing.planB1": "Plán přesně podle tvých cílů",
     "pricing.planB2": "Online konzultace",
     "pricing.planB3": "Kompletní instrukce ke cvikům",
     "pricing.planCta": "Objednat plán",
     "pricing.smallPackLabel": "Menší balíček:",
-    "pricing.smallPack": "5 tréninků za 2 800 Kč",
-    "pricing.smallPackDetail": "(560 Kč/trénink, platnost 2 měsíce)",
+    "pricing.smallPack": "5 tréninků za 2 800 Kč",
+    "pricing.smallPackDetail": "(560 Kč/trénink, platnost 2 měsíce)",
     "pricing.originalPrice": "Původní cena",
 
     // Testimonials
@@ -97,7 +97,7 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     "about.title": "Ahoj, jsem Dominik",
     "about.desc1":
-      "Jsem trenér ve fitness s rekvalifikací akreditovanou MŠMT (Improve Academy). Dobrý trénink podle mě začíná tím, že rozumím člověku a tomu, jak se hýbe. Teprve potom přidáváme váhu.",
+      "Jsem osobní trenér v Brně a trenér ve fitness s rekvalifikací akreditovanou MŠMT (Improve Academy). Dobrý trénink podle mě začíná tím, že rozumím člověku a tomu, jak se hýbe. Teprve potom přidáváme váhu.",
     "about.desc2":
       "Hledám slabá místa a dysbalance, ladím hybnost a na zdravém základu stavíme to, co chceš ty: sílu, kondici, postavu nebo návrat ke sportu. Trénuji v MonsterGymu v Brně-Slatině, česky i anglicky.",
     "about.cert": "Trenér ve fitness · MŠMT · Improve Academy",
@@ -110,7 +110,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Contact
     "contact.title": "Začni prvním tréninkem zdarma",
-    "contact.subtitle": "Napiš mi, co tě trápí nebo kam se chceš dostat. Ozvu se obvykle do 24 hodin.",
+    "contact.subtitle": "Napiš mi, co tě trápí nebo kam se chceš dostat. Ozvu se obvykle do 24 hodin.",
     "contact.gym": "MonsterGym, Brno-Slatina",
     "contact.gymMap": "Zobrazit na mapě",
     "contact.whatsapp": "Napiš mi na WhatsApp",
@@ -141,16 +141,16 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.goalRequired": "Vyber prosím svůj cíl",
     "contact.goalPlaceholder": "Vyber cíl",
     "contact.goalStrength": "Nabrat sílu",
-    "contact.goalWeight": "Zhubnout a shodit váhu",
+    "contact.goalWeight": "Zhubnout a shodit váhu",
     "contact.goalPain": "Hýbat se bez bolesti",
     "contact.goalInjury": "Návrat po zranění nebo operaci",
-    "contact.goalFitness": "Lepší kondice a postava",
+    "contact.goalFitness": "Lepší kondice a postava",
     "contact.goalOther": "Něco jiného",
     "contact.phoneRequired": "Zadej prosím telefon",
     "contact.phoneInvalid": "Telefon nevypadá správně",
     "terms.close": "Zavřít",
     "terms.ok": "Rozumím",
-    "terms.description": "Informace o zpracování osobních údajů a podmínky služeb",
+    "terms.description": "Informace o zpracování osobních údajů a podmínky služeb",
 
     // Footer
     "footer.rights": "Všechna práva vyhrazena.",
@@ -163,23 +163,23 @@ const translations: Record<Language, Record<string, string>> = {
     "faq.title": "Časté otázky",
     "faq.subtitle": "Nenašel jsi odpověď? Napiš mi nebo zavolej, rád poradím.",
     "faq.q1": "Pro koho je osobní trénink?",
-    "faq.a1": "Pro každého, kdo chce silnější a zdravé tělo. Trénuji úplné začátečníky, lidi s bolestmi zad nebo kloubů, lidi po zranění i ty, kdo už cvičí a chtějí se posunout.",
+    "faq.a1": "Pro každého, kdo chce silnější a zdravé tělo. Trénuji úplné začátečníky, lidi s bolestmi zad nebo kloubů, lidi po zranění i ty, kdo už cvičí a chtějí se posunout.",
     "faq.q2": "Musím mít kondici, než začnu?",
     "faq.a2": "Ne. Začínáme přesně tam, kde jsi teď. Zátěž přidáváme postupně podle toho, co tvoje tělo zvládne.",
     "faq.q3": "Jak probíhá první trénink zdarma?",
-    "faq.a3": "Probereme tvůj cíl, zdraví a dosavadní zkušenosti. Podívám se, jak se hýbeš, a odtrénujeme spolu seznamovací trénink. Pak se sám rozhodneš, jestli chceš pokračovat.",
+    "faq.a3": "Probereme tvůj cíl, zdraví a dosavadní zkušenosti. Podívám se, jak se hýbeš, a odtrénujeme spolu seznamovací trénink. Pak se sám rozhodneš, jestli chceš pokračovat.",
     "faq.q4": "Mám bolesti zad nebo jsem po operaci. Můžu trénovat?",
-    "faq.a4": "Ano, s tím pracuji často. Začneme diagnostikou pohybu a cviky volím tak, aby nebolely. Pokud jsi čerstvě po operaci, je potřeba, aby ti trénink schválil lékař nebo fyzioterapeut.",
-    "faq.q5": "Kde a kdy trénink probíhá?",
-    "faq.a5": "V MonsterGymu, Tuřanka 1260/1, Brno-Slatina. Trénuji obvykle od pondělí do soboty odpoledne a večer, konkrétní termín domluvíme podle tebe.",
+    "faq.a4": "Ano, s tím pracuji často. Začneme diagnostikou pohybu a cviky volím tak, aby nebolely. Pokud jsi čerstvě po operaci, je potřeba, aby ti trénink schválil lékař nebo fyzioterapeut.",
+    "faq.q5": "Kde a kdy trénink probíhá?",
+    "faq.a5": "V MonsterGymu, Tuřanka 1260/1, Brno-Slatina. Trénuji obvykle od pondělí do soboty odpoledne a večer, konkrétní termín domluvíme podle tebe.",
     "faq.q6": "Kolik to stojí?",
-    "faq.a6": "Hodinový trénink stojí 600 Kč. Výhodnější je balíček 10 tréninků za 5 400 Kč (platnost 4 měsíce) nebo 5 tréninků za 2 800 Kč (platnost 2 měsíce). Tréninkový plán na 3 měsíce stojí 1 000 Kč.",
-    "faq.q7": "Co si mám vzít s sebou?",
-    "faq.a7": "Sportovní oblečení, čistou obuv do posilovny, ručník a pití. Nic dalšího nepotřebuješ.",
-    "faq.q8": "Trénuješ i v angličtině?",
-    "faq.a8": "Ano, trénink můžeme vést česky i anglicky.",
+    "faq.a6": "Hodinový trénink stojí 600 Kč. Výhodnější je balíček 10 tréninků za 5 400 Kč (platnost 4 měsíce) nebo 5 tréninků za 2 800 Kč (platnost 2 měsíce). Tréninkový plán na 3 měsíce stojí 1 000 Kč.",
+    "faq.q7": "Co si mám vzít s sebou?",
+    "faq.a7": "Sportovní oblečení, čistou obuv do posilovny, ručník a pití. Nic dalšího nepotřebuješ.",
+    "faq.q8": "Trénuješ i v angličtině?",
+    "faq.a8": "Ano, trénink můžeme vést česky i anglicky.",
     "faq.q9": "Jak se objednám?",
-    "faq.a9": "Vyplň formulář níže, zavolej na 725 961 371 nebo mi napiš na WhatsApp. Ozvu se obvykle do 24 hodin.",
+    "faq.a9": "Vyplň formulář níže, zavolej na 725 961 371 nebo mi napiš na WhatsApp. Ozvu se obvykle do 24 hodin.",
 
     // Back to top
     backToTop: "Zpět nahoru",
@@ -197,7 +197,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.language": "Language",
 
     // Hero
-    "hero.eyebrow": "Personal trainer · MonsterGym Brno-Slatina",
+    "hero.eyebrow": "Personal trainer Brno-Slatina · MonsterGym",
     "hero.title1": "A stronger body.",
     "hero.title2": "Without pain or injuries.",
     "hero.description":

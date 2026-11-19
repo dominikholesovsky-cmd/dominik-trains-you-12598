@@ -50,15 +50,29 @@
         "priceRange": "600 Kč",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Tuřanka 1 (MonsterGym)",
+          "streetAddress": "Tuřanka 1260/1 (MonsterGym)",
           "addressLocality": "Brno-Slatina",
           "postalCode": "627 00",
           "addressCountry": "CZ"
         },
-        "areaServed": { "@type": "City", "name": "Brno" },
+        "areaServed": [
+          { "@type": "City", "name": "Brno" },
+          { "@type": "Place", "name": "Brno-Slatina" }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "16:00",
+            "closes": "20:00"
+          }
+        ],
         "knowsLanguage": ["cs", "en"],
         "founder": { "@id": "https://www.dominikholesovsky.cz/#person" },
-        "sameAs": ["https://www.instagram.com/dominik.holesovsky/"],
+        "sameAs": [
+          "https://www.instagram.com/dominik.holesovsky/",
+          "https://www.firmy.cz/detail/14102452"
+        ],
         "makesOffer": [
           { "@type": "Offer", "name": "Osobní trénink (60 minut)", "price": "600", "priceCurrency": "CZK" },
           { "@type": "Offer", "name": "Balíček 10 tréninků", "price": "5400", "priceCurrency": "CZK" },
