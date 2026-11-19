@@ -88,10 +88,10 @@ const Hero = () => {
           <dl
             data-reveal
             style={{ "--reveal-delay": "320ms" } as React.CSSProperties}
-            className="grid grid-cols-3 gap-3 border-t border-border pt-5 sm:flex sm:flex-wrap sm:gap-x-8 sm:gap-y-4"
+            className="grid grid-cols-3 items-start gap-3 border-t border-border pt-5 sm:flex sm:flex-wrap sm:items-start sm:gap-x-8 sm:gap-y-4"
           >
             {stats.map((stat) => (
-              <div key={stat.id} className="flex flex-col-reverse gap-0.5">
+              <div key={stat.id} className="flex flex-col-reverse justify-end gap-0.5">
                 <dt className="text-[13px] leading-snug text-muted-foreground sm:text-sm">{stat.label}</dt>
                 <dd className="whitespace-nowrap font-display text-[22px] font-bold sm:text-[28px]">{stat.value}</dd>
               </div>

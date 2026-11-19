@@ -81,7 +81,6 @@ const translations: Record<Language, Record<string, string>> = {
     // Testimonials
     "testimonials.title": "Co říkají klienti",
     "testimonials.subtitle": "Konkrétní lidé, konkrétní výsledky.",
-    "testimonials.note": "Jména klientů jsou kvůli soukromí změněná.",
     "testimonials.veraTitle": "Bez bolesti zad. Dnes běhá a vzpírá.",
     "testimonials.veraStory": "Po letech bolestí zad se jich Veronika zbavila. Dnes vesele běhá a dokonce vzpírá.",
     "testimonials.vera":
@@ -225,7 +224,6 @@ const translations: Record<Language, Record<string, string>> = {
     // Testimonials
     "testimonials.title": "What clients say",
     "testimonials.subtitle": "Real people, real results.",
-    "testimonials.note": "Client names have been changed for privacy.",
     "testimonials.veraTitle": "No more back pain. Now she runs and lifts.",
     "testimonials.veraStory": "After years of back pain, Veronika got rid of it. Today she happily runs and even lifts weights.",
     "testimonials.vera":

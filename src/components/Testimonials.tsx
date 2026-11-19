@@ -37,7 +37,6 @@ const Testimonials = () => {
             </figure>
           ))}
         </div>
-        <p className="-mt-4 text-sm text-muted-foreground sm:-mt-6">{t("testimonials.note")}</p>
       </div>
     </section>
   );
