@@ -1,4 +1,6 @@
+import { Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { GOOGLE_REVIEW_URL } from "@/lib/links";
 
 const Testimonials = () => {
   const { t } = useLanguage();
@@ -36,6 +38,21 @@ const Testimonials = () => {
               <figcaption className="mt-auto pt-2 font-semibold">{item.name}</figcaption>
             </figure>
           ))}
+        </div>
+        <div
+          data-reveal
+          className="flex flex-col items-start gap-4 rounded-[22px] border border-border p-6 sm:flex-row sm:items-center sm:justify-between sm:p-7"
+        >
+          <p className="text-[17px] text-foreground/80">{t("testimonials.reviewAsk")}</p>
+          <a
+            href={GOOGLE_REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex min-h-[48px] shrink-0 items-center gap-2 rounded-full border-[1.5px] border-[#CFCDC5] px-5 font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/40 hover:bg-background"
+          >
+            <Star className="h-[18px] w-[18px] text-[#E8A317] transition-transform duration-200 group-hover:rotate-12" aria-hidden="true" fill="currentColor" />
+            {t("testimonials.reviewCta")}
+          </a>
         </div>
       </div>
     </section>

@@ -7,3 +7,4 @@ export const MAP_URL =
   "https://www.google.com/maps/place/MONSTER+Gym/@49.1764238,16.6829687,17z/data=!4m12!1m5!3m4!2zNDnCsDEwJzM1LjEiTiAxNsKwNDEnMDguMCJF!8m2!3d49.1764238!4d16.6855436!3m5!1s0x4712eb20d82b1b19:0xa108cd5891f7fd3e!8m2!3d49.1764238!4d16.6881185!16s%2Fg%2F11g6nr25xm";
 export const FORMSPREE_URL = "https://formspree.io/f/xpwojlgy";
 export const WHATSAPP_URL = "https://wa.me/420725961371";
+export const GOOGLE_REVIEW_URL = "https://g.page/r/CRI4Y8-RVWi-EBM/review";
